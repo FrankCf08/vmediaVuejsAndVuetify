@@ -103,7 +103,7 @@
       </ul>
       </div>
     </div>
-    <div id="class7">
+    <div v-show="visible" id="class7">
       <div class="gamesList">
         <ul>
           <li
@@ -151,6 +151,24 @@
         </v-text-field>
       </div>
     </div>
+    <div id="class8">
+      <h1>Duties</h1>
+      <ul>
+        <li 
+          v-for="duty in duties"
+          v-bind:key="duty.id"
+          @click="changedState(duty)"
+          :class="{crossout: duty.done==false}"
+          >{{duty.name}}
+          <span :class="[duty.done? 'blue--text': 'red--text']">
+            {{duty.done}}
+          </span>
+        </li>
+      </ul>
+      <div>
+        <h4>Number of duties completed: {{dutiesCompleted.length}} </h4>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -166,11 +184,15 @@ export default {
       gameSearched: '',
       connected: true,
       visible: false,
+      secondConnected: true,
       age: 17,
       minimumScore: 14,
       max:100,
       min:0,
-      secondConnected: true,
+      rules: [
+        // value => !!value || 'Required.',
+        value => (value && value.length >= 3) || 'Min 3 characters',
+      ],
       days:[
         'Monday',
         'Tuesday',
@@ -188,10 +210,6 @@ export default {
       ],
       priorityList:[
         'high', 'low'
-      ],
-      rules: [
-        // value => !!value || 'Required.',
-        value => (value && value.length >= 3) || 'Min 3 characters',
       ],
       games:[
         {name:'Ludo', gender:'Strategy', score:7},
@@ -213,7 +231,9 @@ export default {
 
       this.newDutyEntered = null
       this.priorityChoice = null
-      
+    },
+    changedState(duty){
+      duty.done = !duty.done
     }
   },
   computed:{
@@ -233,6 +253,15 @@ export default {
     searchGame(){
       return this.games.filter(game => game.name.includes(this.gameSearched))
     },
+    dutiesCompleted(){
+      return this.duties.filter(duty => duty.done)
+    },
   }
 };
 </script>
+
+<style scoped>
+  .crossout{
+    text-decoration: line-through;
+  }
+</style>
