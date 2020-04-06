@@ -169,7 +169,7 @@
         <h4>Number of duties completed: {{dutiesCompleted.length}} </h4>
       </div>
     </div>
-    <div class="mt-2 ml-2" id="class9">
+    <div v-show="visible" class="mt-2 ml-2" id="class9">
       <div>
         <v-btn 
           medium 
@@ -204,10 +204,52 @@
         </transition>
       </div>
     </div>
+    <div id="class10">
+      <v-row>
+        <v-col cols="12" sm="10" offset-sm="1">    
+          <v-card>
+              <v-container fluid>
+                <v-row>
+                  <v-col
+                    v-for="person in people"
+                    :key="person.id.value"
+                    class="d-flex child-flex"
+                    cols="12"
+                    sm="6"
+                    md="4"
+                    lg="3"
+                  >
+                    <v-card flat tile class="d-flex">
+                      <v-img
+                        :src="person.picture.large"
+                        :alt="person.name.first"
+                        aspect-ratio="1"
+                        class="grey lighten-2"
+                      >
+                        <template v-slot:placeholder>
+                          <v-row
+                            class="fill-height ma-0"
+                            align="center"
+                            justify="center"
+                          >
+                            <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                          </v-row>
+                        </template>
+                      </v-img>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+        </v-col>
+      </v-row>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: "HelloWorld",
   
@@ -264,7 +306,12 @@ export default {
         {name:'Racing Cars', gender:'Sports', score:28},
         {name:'Crash Bandicot', gender:'Adventure', score:35},
       ],
+      peopleRequestURL: 'https://randomuser.me/api/?results=500',
+      people: [],
     }
+  },
+  mounted(){
+    this.getPeople()
   },
   methods: {
     addDuty(){
@@ -281,7 +328,20 @@ export default {
     },
     showHideText(){
       this.transitionIf = !this.transitionIf
-    }
+    },
+    getPeople(){
+      axios
+        .request({
+          method:'get',
+          url: this.peopleRequestURL
+        })
+        .then(response => {
+            this.people = response.data.results
+        })
+        .catch(error => {
+          console.error('errorGetPeople', error)
+        })
+    },
   },
   computed:{
     reverseMessage(){
