@@ -1,143 +1,238 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-        <v-alert type="success">
-          I'm a success alert.
-        </v-alert>
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank"
-            >Discord Community</a
-          >
-        </p>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
+  <div>
+    <div v-show="visible" id="class1">
+       <input type="text" v-model="message">
+      <h1>{{message}}</h1>
+      <h1 v-show="connected"> {{message}} connected</h1>
+    </div>
+    <div v-show="visible"  id="class2">
+      <div v-if="age == 18">
+        I am just eighteen
+      </div>
+      <div v-else-if="age< 18">
+        YOu are under age
+      </div>
+      <div v-else>
+        You are inmortal
+      </div>
+    </div>
+    <div v-show="visible"  id="class3">
+      <ul>
+        <li 
+         v-for="day in days"
+         v-bind:key="day.id">{{day}}</li>
+      </ul>
+    </div>
+    <div v-show="visible"  id="class4">
+        List of duties:
+      <ol>
+        <li
+          v-for="duty in duties"
+          v-bind:key="duty.id"
+          v-show="duty.priority == 'low'">
+            {{duty.name}}
+           <span class="font-weight-bold">{{duty.priority}}</span></li>
+      </ol>
+    </div>
+    <div v-show="visible" id="class5">
+      <ol>
+        <li 
+          v-for="duty in duties"
+          v-bind:key="duty.id">
+          {{duty.name}}
+          <span 
+            :class="[duty.priority == 'high'? 'blue--text' : 'red--text']"
+            >{{duty.priority}}</span>
+        </li>
+      </ol>
+      <div>
+        <v-row>
+          <v-col cols="12" md="6" sm="5">
+            <v-text-field
+              label="Enter new duty" 
+              hide-details="auto"
+              v-model="newDutyEntered"
+              ></v-text-field>
+          </v-col>
+          <v-col cols="12" md="3" sm="5">
+            <v-overflow-btn
+              class="my-2"
+              :items="priorityList"
+              label="Priority List"
+              v-model="priorityChoice"
+            ></v-overflow-btn>
+          </v-col>
+          <v-col 
+            cols="12" 
+            md="3"
+            sm="2"
+            align="center"
+            justify="center">
+            <v-btn 
+              fab dark color="indigo"
+              @click="addDuty">
+              <v-icon small dark>mdi-plus</v-icon>
+            </v-btn>
+          </v-col>
         </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
+      </div>
+    </div>
+    <div v-show="visible" id="class6">
+      <h1>{{message}}</h1>
+      <h4>{{reverseMessage}}</h4>
+      <div class="firstComputed">
+        <ul>
+          <li
+            v-for="duty in dutiesDone"
+            v-bind:key="duty.id"
+            >
+            {{duty.name}} - 
+            <span :class="[duty.done? 'blue--text' : 'red--text']">{{duty.done}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="secondComputed">
+        <ul>
+        <li
+          v-for="duty in dutiesOrdered"
+          v-bind:key="duty.id"
+        >
+          {{duty.name}} - 
+          <span :class="['green--text']">{{duty.timeTaken}}</span> mins
+        </li>
+      </ul>
+      </div>
+    </div>
+    <div id="class7">
+      <div class="gamesList">
+        <ul>
+          <li
+            v-for="game in bestScoreGames"
+            v-bind:key="game.id"
+            > {{game.name}} - score: {{game.score}}
+          </li>
+        </ul>
+      </div>
+      <div class="slider">
+        <v-subheader class="pl-2">Input range</v-subheader>
+        <v-slider
+            v-model="minimumScore"
+            class="align-center"
+            :max="max"
+            :min="min"
+            hide-details
+            :thumb-size="24"
+            thumb-label="always"
           >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col class="mb-5" cols="12">
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
+          <template v-slot:append>
+              <v-text-field
+                v-model="minimumScore"
+                class="mt-0 pt-0"
+                hide-details
+                single-line
+                type="number"
+                style="width: 60px"
+              ></v-text-field>
+            </template>
+          </v-slider>
+      </div>
+      <div class="inputSearch">
+         <ul>
+          <li
+            v-for="game in searchGame"
+            v-bind:key="game.id"
+            > {{game.name}}
+          </li>
+        </ul>
+        <v-text-field 
+          label="Enter game to search"
+          v-model="gameSearched"
           >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+        </v-text-field>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   name: "HelloWorld",
+  
+  data() {
+    return {
+      message: 'Hola mucho gusto :)',
+      newDutyEntered: null,
+      priorityChoice: null,
+      gameSearched: '',
+      connected: true,
+      visible: false,
+      age: 17,
+      minimumScore: 14,
+      max:100,
+      min:0,
+      secondConnected: true,
+      days:[
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',  
+      ],
+      duties:[
+        {name:'Do Cws', priority: 'high', done: true, timeTaken: 128},
+        {name:'Go for a walk', priority: 'low', done: false, timeTaken: 21},
+        {name:'Take my dog out', priority: 'high', done: true, timeTaken: 85},
+        {name:'Clean my room', priority: 'low', done: true, timeTaken: 174},
+        {name:'wash cothes', priority: 'high', done: false, timeTaken: 16},
+        {name:'Do the wash-up', priority: 'high', done: false, timeTaken: 192},
+      ],
+      priorityList:[
+        'high', 'low'
+      ],
+      rules: [
+        // value => !!value || 'Required.',
+        value => (value && value.length >= 3) || 'Min 3 characters',
+      ],
+      games:[
+        {name:'Ludo', gender:'Strategy', score:7},
+        {name:'StartWars', gender:'Adventure', score:96},
+        {name:'Football', gender:'Sports', score:12},
+        {name:'Redisent evil', gender:'Triller Adventure', score:54},
+        {name:'Tennis', gender:'Sports', score:74},
+        {name:'Racing Cars', gender:'Sports', score:28},
+        {name:'Crash Bandicot', gender:'Adventure', score:35},
+      ],
+    }
+  },
+  methods: {
+    addDuty(){
+      this.duties.push({
+        name: this.newDutyEntered,
+        priority: this.priorityChoice
+      })
 
-  data: () => ({
-    ecosystem: [
-      {
-        text: "vuetify-loader",
-        href: "https://github.com/vuetifyjs/vuetify-loader"
-      },
-      {
-        text: "github",
-        href: "https://github.com/vuetifyjs/vuetify"
-      },
-      {
-        text: "awesome-vuetify",
-        href: "https://github.com/vuetifyjs/awesome-vuetify"
-      }
-    ],
-    importantLinks: [
-      {
-        text: "Documentation",
-        href: "https://vuetifyjs.com"
-      },
-      {
-        text: "Chat",
-        href: "https://community.vuetifyjs.com"
-      },
-      {
-        text: "Made with Vuetify",
-        href: "https://madewithvuejs.com/vuetify"
-      },
-      {
-        text: "Twitter",
-        href: "https://twitter.com/vuetifyjs"
-      },
-      {
-        text: "Articles",
-        href: "https://medium.com/vuetify"
-      }
-    ],
-    whatsNext: [
-      {
-        text: "Explore components",
-        href: "https://vuetifyjs.com/components/api-explorer"
-      },
-      {
-        text: "Select a layout",
-        href: "https://vuetifyjs.com/layout/pre-defined"
-      },
-      {
-        text: "Frequently Asked Questions",
-        href: "https://vuetifyjs.com/getting-started/frequently-asked-questions"
-      }
-    ]
-  })
+      this.newDutyEntered = null
+      this.priorityChoice = null
+      
+    }
+  },
+  computed:{
+    reverseMessage(){
+      return this.message.split('').reverse().join('')
+    },
+    dutiesDone(){
+      return this.duties.filter(duty => duty.done)
+    },
+    dutiesOrdered(){
+      const newDuties = this.duties
+      return newDuties.sort( (a,b) => b.timeTaken - a.timeTaken)
+    },
+    bestScoreGames(){
+      return this.games.filter(game => game.score >= this.minimumScore)
+    },
+    searchGame(){
+      return this.games.filter(game => game.name.includes(this.gameSearched))
+    },
+  }
 };
 </script>
