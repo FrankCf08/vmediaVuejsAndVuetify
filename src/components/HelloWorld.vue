@@ -151,7 +151,7 @@
         </v-text-field>
       </div>
     </div>
-    <div id="class8">
+    <div v-show="visible" id="class8">
       <h1>Duties</h1>
       <ul>
         <li 
@@ -167,6 +167,41 @@
       </ul>
       <div>
         <h4>Number of duties completed: {{dutiesCompleted.length}} </h4>
+      </div>
+    </div>
+    <div class="mt-2 ml-2" id="class9">
+      <div>
+        <v-btn 
+          medium 
+          color="blue lighten-1"
+          rounded
+          @click="showHideText">Show/Hide text</v-btn>
+      </div>
+      <div class="transitionClass">
+        <transition name="fade">
+          <h2 v-if="transitionIf">{{textTransition.transitionClass}}</h2>
+        </transition>
+      </div>
+      <div class="CSStransition">
+        <transition name="slide-fade">
+          <h2 v-if="transitionIf">{{textTransition.cssTransition}}</h2>
+        </transition>
+      </div>
+      <div class="CSSAnimation">
+        <transition name="bounce">
+          <h2 v-if="transitionIf">{{textTransition.cssAnimation}}</h2>
+        </transition>
+      </div>
+      <div class="transitionAppear">
+        <transition appear>
+          <h2 v-if="transitionIf">{{textTransition.transitionAppear}}</h2>
+        </transition>
+      </div>
+      <div class="transitionBTWElements">
+        <transition name="fade" mode="out-in">
+          <h2 v-if="transitionIf">{{textTransition.btwElements}}</h2>
+          <h2 v-else>{{textTransition.btwElementElse}}</h2>
+        </transition>
       </div>
     </div>
   </div>
@@ -185,6 +220,7 @@ export default {
       connected: true,
       visible: false,
       secondConnected: true,
+      transitionIf: false,
       age: 17,
       minimumScore: 14,
       max:100,
@@ -193,6 +229,14 @@ export default {
         // value => !!value || 'Required.',
         value => (value && value.length >= 3) || 'Min 3 characters',
       ],
+      textTransition:{
+        transitionClass: 'Transition Class',
+        cssTransition:'CSS transition',
+        cssAnimation: 'CSS Animation',
+        transitionAppear: 'Transition Appear', //applied only when Render
+        btwElements: 'Transition Between Elements',
+        btwElementElse: 'Else transition'
+      },
       days:[
         'Monday',
         'Tuesday',
@@ -234,6 +278,9 @@ export default {
     },
     changedState(duty){
       duty.done = !duty.done
+    },
+    showHideText(){
+      this.transitionIf = !this.transitionIf
     }
   },
   computed:{
@@ -263,5 +310,42 @@ export default {
 <style scoped>
   .crossout{
     text-decoration: line-through;
+  }
+  .fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  /* Enter and leave animations can use different */
+  /* durations and timing functions.              */
+  .slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+  /* CSS animation */
+  .bounce-enter-active {
+  animation: bounce-in .5s;
+  }
+  .bounce-leave-active {
+    animation: bounce-in .5s reverse;
+  }
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 </style>
