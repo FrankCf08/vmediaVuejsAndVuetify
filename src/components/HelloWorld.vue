@@ -204,7 +204,7 @@
         </transition>
       </div>
     </div>
-    <div id="class10">
+    <div v-show="visible" id="class10">
       <v-row>
         <v-col cols="12" sm="10" offset-sm="1">    
           <v-card>
@@ -244,14 +244,23 @@
         </v-col>
       </v-row>
     </div>
+    <div id="class11">
+      <h1 class="mt-2 ml-2">My duties:</h1>
+      <Class11 />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Class11 from "../classes/class11";
 
 export default {
   name: "HelloWorld",
+
+  components:{
+    Class11
+  },
   
   data() {
     return {
