@@ -244,22 +244,27 @@
         </v-col>
       </v-row>
     </div>
-    <div id="class11">
+    <div v-show="visible" id="class11">
       <h1 class="mt-2 ml-2">My duties:</h1>
       <Class11 />
+    </div>
+    <div id="class12">
+      <Class12></Class12>
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Class11 from "../classes/class11";
+import Class11 from "../classes/class11"
+import Class12 from "../classes/class12"
 
 export default {
   name: "HelloWorld",
 
   components:{
-    Class11
+    Class11,
+    Class12
   },
   
   data() {
