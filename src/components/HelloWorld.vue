@@ -248,8 +248,18 @@
       <h1 class="mt-2 ml-2">My duties:</h1>
       <Class11 />
     </div>
-    <div id="class12">
-      <Class12></Class12>
+    <div v-show="visible" id="class12">
+      <Class12 />
+    </div>
+    <div id="class13">
+      <Class13 class="blue--text" :messageSendFromParent="message"></Class13>
+      <Class13 class="red--text" :arraySendFromParent="duties"></Class13>
+      <Class13 class="green--text" :gamePassedFromParent="games"></Class13>
+      <Class13
+        :messageSendFromParent="message"
+        :arraySendFromParent="duties"
+        :gamePassedFromParent="games"
+        :sendingParentObject="textTransition"></Class13>
     </div>
   </div>
 </template>
@@ -258,13 +268,15 @@
 import axios from 'axios'
 import Class11 from "../classes/class11"
 import Class12 from "../classes/class12"
+import Class13 from "../classes/class13"
 
 export default {
   name: "HelloWorld",
 
   components:{
     Class11,
-    Class12
+    Class12,
+    Class13,
   },
   
   data() {
