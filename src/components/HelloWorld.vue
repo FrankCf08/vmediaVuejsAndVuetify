@@ -251,7 +251,7 @@
     <div v-show="visible" id="class12">
       <Class12 />
     </div>
-    <div id="class13">
+    <div v-show="visible" id="class13">
       <Class13 class="blue--text" :messageSendFromParent="message"></Class13>
       <Class13 class="red--text" :arraySendFromParent="duties"></Class13>
       <Class13 class="green--text" :gamePassedFromParent="games"></Class13>
@@ -261,6 +261,16 @@
         :gamePassedFromParent="games"
         :sendingParentObject="textTransition"></Class13>
     </div>
+    <div id="class14">
+      <Class14 
+        v-for="person in people"
+        :key="person.id.value"
+        :name="person.name"
+        :email="person.email"
+        :picture="person.picture.large"
+        :location="person.location"
+        ></Class14>
+    </div>
   </div>
 </template>
 
@@ -269,6 +279,7 @@ import axios from 'axios'
 import Class11 from "../classes/class11"
 import Class12 from "../classes/class12"
 import Class13 from "../classes/class13"
+import Class14 from "../classes/class14"
 
 export default {
   name: "HelloWorld",
@@ -277,6 +288,7 @@ export default {
     Class11,
     Class12,
     Class13,
+    Class14,
   },
   
   data() {
@@ -362,7 +374,7 @@ export default {
           url: this.peopleRequestURL
         })
         .then(response => {
-            this.people = response.data.results
+            this.people = response.data.results           
         })
         .catch(error => {
           console.error('errorGetPeople', error)
