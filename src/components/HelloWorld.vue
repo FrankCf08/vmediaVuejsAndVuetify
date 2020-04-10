@@ -261,7 +261,7 @@
         :gamePassedFromParent="games"
         :sendingParentObject="textTransition"></Class13>
     </div>
-    <div id="class14">
+    <div v-show="visible" id="class14">
       <Class14 
         v-for="person in people"
         :key="person.id.value"
@@ -270,6 +270,40 @@
         :picture="person.picture.large"
         :location="person.location"
         ></Class14>
+    </div>
+    <div id="class15">
+      <Class15
+        position="alert--down-right"
+        :type="alertTypes.success">
+        <template slot="header"> I am the <strong>Success</strong> header</template>
+        <template> Success Content</template>
+        <template slot="footer"> I am the <span class="black--text">Success</span> footer</template>
+      </Class15>
+      <Class15
+        position="alert--up-right"
+        :type="alertTypes.error">
+        <template slot="header"> I am the <strong>ERROR</strong> header</template>
+        <template> Error Content</template>
+        <template slot="footer"> I am the <span class="black--text">ERROR</span> footer</template>
+      </Class15>
+      <Class15
+        position="alert--down-left"
+        :type="alertTypes.info">
+        <template slot="header"> I am the <strong>INFO</strong> header</template>
+        <template> INFO Content</template>
+        <template slot="footer"> I am the <span class="black--text">INFO</span> footer</template>
+      </Class15>
+      <Class15
+        position="alert--up-left"
+        :type="alertTypes.warning">
+        <template slot="header"> I am the <strong>WARNING</strong> header</template>
+        <template> WARNING Content</template>
+        <template slot="footer"> I am the <span class="black--text">WARNING</span> footer</template>
+      </Class15>
+      <Class15
+        position="alert--up-center"
+        >
+      </Class15>
     </div>
   </div>
 </template>
@@ -280,6 +314,7 @@ import Class11 from "../classes/class11"
 import Class12 from "../classes/class12"
 import Class13 from "../classes/class13"
 import Class14 from "../classes/class14"
+import Class15 from "../classes/class15"
 
 export default {
   name: "HelloWorld",
@@ -289,6 +324,7 @@ export default {
     Class12,
     Class13,
     Class14,
+    Class15,
   },
   
   data() {
@@ -346,6 +382,12 @@ export default {
       ],
       peopleRequestURL: 'https://randomuser.me/api/?results=500',
       people: [],
+      alertTypes:{
+        success:'success',
+        warning:'warning',
+        info: 'info',
+        error: 'error',
+      },
     }
   },
   mounted(){
