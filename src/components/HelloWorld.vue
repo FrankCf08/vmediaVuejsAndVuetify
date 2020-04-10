@@ -271,7 +271,7 @@
         :location="person.location"
         ></Class14>
     </div>
-    <div id="class15">
+    <div v-show="visible" id="class15">
       <Class15
         position="alert--down-right"
         :type="alertTypes.success">
@@ -305,6 +305,40 @@
         >
       </Class15>
     </div>
+    <div id="class16">
+      <Class16
+        :duties="duties">
+        <template slot-scope="dataToShow">
+           <v-card
+            class="mx-auto" 
+            max-width="400">
+            <v-list>
+              <v-list-item-group
+              color="indigo">
+              <v-list-item>
+                <v-list-item-content
+                v-text="dataToShow.titleName">
+                </v-list-item-content>
+              </v-list-item>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
+        </template>
+      </Class16>
+      <Class16
+        class="ml-4"
+        :duties="duties">
+          <template slot-scope="props">
+            <li>{{props.titleName}}</li>
+          </template>
+      </Class16>
+      <Class16
+        :duties="duties">
+        <template slot-scope="myData">
+          <h1>{{myData.titleName}}</h1>
+        </template>
+      </Class16>
+    </div>
   </div>
 </template>
 
@@ -315,6 +349,7 @@ import Class12 from "../classes/class12"
 import Class13 from "../classes/class13"
 import Class14 from "../classes/class14"
 import Class15 from "../classes/class15"
+import Class16 from "../classes/class16"
 
 export default {
   name: "HelloWorld",
@@ -325,6 +360,7 @@ export default {
     Class13,
     Class14,
     Class15,
+    Class16,
   },
   
   data() {
