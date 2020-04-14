@@ -305,7 +305,7 @@
         >
       </Class15>
     </div>
-    <div id="class16">
+    <div v-show="visible" id="class16">
       <Class16
         :duties="duties">
         <template slot-scope="dataToShow">
@@ -339,6 +339,77 @@
         </template>
       </Class16>
     </div>
+    <div id="class17">
+      <v-container
+        fluid
+        grid-list-xl
+        >
+        <v-row
+          align="center"
+          justify="center"
+          style="height: 35rem;"
+          >
+          <v-col 
+            cols="12"
+            align="center"
+            >
+            <div class="my-4">
+              <v-btn
+                @click="showError = true" 
+                color="red">Error</v-btn>
+              <v-btn
+                @click="showSuccess = true" 
+                color="green">Success</v-btn>
+            </div>
+            <div class="my-4">
+              <v-btn
+                @click="showInfo = true" 
+                color="blue">Info</v-btn>
+              <v-btn
+                @click="showWarning = true" 
+                color="orange">Warning</v-btn>
+            </div>
+          </v-col>
+        </v-row>
+      </v-container>
+      <Class17
+        @hideAlert="showSuccess = false"
+        v-show="showSuccess"
+        position= "alert--up-right"
+        :type="alertTypes.success">
+        <template slot="header"> I am a <strong>SUCCESS</strong> Header</template>
+        <template> New <strong>SUCCESS</strong> message </template>
+        <template slot="footer"> I am a SUCESS footer</template>
+      </Class17>
+      <Class17
+        @hideAlert="showError = false"
+        v-show="showError"
+        position= "alert--up-left"
+        :type="alertTypes.error">
+        <template slot="header"> I am an <strong>ERROR</strong> Header</template>
+        <template> New <strong>ERROR</strong> message </template>
+        <template slot="footer"> I am a ERROR footer</template>
+      </Class17>
+      <Class17
+        @hideAlert="showWarning = false"
+        v-show="showWarning"
+        position= "alert--down-right"
+        :type="alertTypes.warning">
+        <template slot="header"> I am a <strong>WARNING</strong> Header</template>
+        <template> New <strong>WARNING</strong> message </template>
+        <template slot="footer"> I am a WARNING footer</template>
+      </Class17>
+      <Class17
+        @hideAlert="showInfo = false"
+        v-show="showInfo"
+        position= "alert--down-left"
+        :type="alertTypes.info"
+        >
+        <template slot="header"> I am an <strong>INFO</strong> Header</template>
+        <template> New <strong>INFO</strong> message </template>
+        <template slot="footer"> I am a INFO footer</template>
+      </Class17>
+    </div>
   </div>
 </template>
 
@@ -350,6 +421,7 @@ import Class13 from "../classes/class13"
 import Class14 from "../classes/class14"
 import Class15 from "../classes/class15"
 import Class16 from "../classes/class16"
+import Class17 from "../classes/class17"
 
 export default {
   name: "HelloWorld",
@@ -361,6 +433,7 @@ export default {
     Class14,
     Class15,
     Class16,
+    Class17,
   },
   
   data() {
@@ -373,6 +446,10 @@ export default {
       visible: false,
       secondConnected: true,
       transitionIf: false,
+      showSuccess: false,
+      showError: false,
+      showInfo: false,
+      showWarning: false,
       age: 17,
       minimumScore: 14,
       max:100,
