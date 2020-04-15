@@ -16,19 +16,19 @@
         You are inmortal
       </div>
     </div>
-    <div v-show="visible"  id="class3">
+    <div v-show="visible" id="class3">
       <ul>
         <li 
          v-for="day in days"
-         v-bind:key="day.id">{{day}}</li>
+         :key="day + '-class3'">{{day}}</li>
       </ul>
     </div>
-    <div v-show="visible"  id="class4">
+    <div v-show="visible" id="class4">
         List of duties:
       <ol>
         <li
           v-for="duty in duties"
-          v-bind:key="duty.id"
+          :key="duty.name + '-class4'"
           v-show="duty.priority == 'low'">
             {{duty.name}}
            <span class="font-weight-bold">{{duty.priority}}</span></li>
@@ -38,7 +38,7 @@
       <ol>
         <li 
           v-for="duty in duties"
-          v-bind:key="duty.id">
+          v-bind:key="duty.name +'-class5'">
           {{duty.name}}
           <span 
             :class="[duty.priority == 'high'? 'blue--text' : 'red--text']"
@@ -84,7 +84,7 @@
         <ul>
           <li
             v-for="duty in dutiesDone"
-            v-bind:key="duty.id"
+            v-bind:key="duty.name + '-class6'"
             >
             {{duty.name}} - 
             <span :class="[duty.done? 'blue--text' : 'red--text']">{{duty.done}}</span>
@@ -95,7 +95,7 @@
         <ul>
         <li
           v-for="duty in dutiesOrdered"
-          v-bind:key="duty.id"
+          v-bind:key="duty.name+'class6-second'"
         >
           {{duty.name}} - 
           <span :class="['green--text']">{{duty.timeTaken}}</span> mins
@@ -108,7 +108,7 @@
         <ul>
           <li
             v-for="game in bestScoreGames"
-            v-bind:key="game.id"
+            v-bind:key="game.name + '-class7'"
             > {{game.name}} - score: {{game.score}}
           </li>
         </ul>
@@ -140,7 +140,7 @@
          <ul>
           <li
             v-for="game in searchGame"
-            v-bind:key="game.id"
+            v-bind:key="game.name + '-class7-second'"
             > {{game.name}}
           </li>
         </ul>
@@ -156,7 +156,7 @@
       <ul>
         <li 
           v-for="duty in duties"
-          v-bind:key="duty.id"
+          v-bind:key="duty.name + '-class8'"
           @click="changedState(duty)"
           :class="{crossout: duty.done==false}"
           >{{duty.name}}
@@ -212,7 +212,7 @@
                 <v-row>
                   <v-col
                     v-for="person in people"
-                    :key="person.id.value"
+                    :key="person.cell+'-'+ person.name.first + '-class10'"
                     class="d-flex child-flex"
                     cols="12"
                     sm="6"
@@ -411,7 +411,7 @@
       </Class17>
     </div>
     <div id="class18">
-      <Class18></Class18>
+      <Class18/>
     </div>
   </div>
 </template>
@@ -534,7 +534,7 @@ export default {
           url: this.peopleRequestURL
         })
         .then(response => {
-            this.people = response.data.results           
+          this.people = response.data.results
         })
         .catch(error => {
           console.error('errorGetPeople', error)
