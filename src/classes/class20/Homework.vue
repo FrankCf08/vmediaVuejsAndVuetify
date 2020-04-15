@@ -1,0 +1,29 @@
+<template>
+ <div>
+  <v-card
+   class="mx-auto"
+   max-width="300"
+   >
+   <v-list>
+    <v-list-item-group
+     color="orange">
+     <v-list-item>
+      <v-list-item-content>
+       <v-list-item-title
+        class="text-center">
+        {{duty.name}}
+       </v-list-item-title>
+      </v-list-item-content>
+     </v-list-item>
+    </v-list-item-group>
+   </v-list>
+  </v-card>
+ </div>
+</template>
+<script>
+export default {
+ props:{
+  duty: Object,
+ },
+}
+</script>
