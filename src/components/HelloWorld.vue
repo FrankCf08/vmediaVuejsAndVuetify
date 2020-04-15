@@ -410,8 +410,12 @@
         <template slot="footer"> I am a INFO footer</template>
       </Class17>
     </div>
-    <div id="class18">
+    <div v-show="visible" id="class18">
       <Class18/>
+    </div>
+    <div id="class19">
+      <Class19
+        :duties="duties"></Class19>
     </div>
   </div>
 </template>
@@ -426,6 +430,7 @@ import Class15 from "../classes/class15"
 import Class16 from "../classes/class16"
 import Class17 from "../classes/class17"
 import Class18 from "../classes/class18"
+import Class19 from "../classes/class19"
 
 export default {
   name: "HelloWorld",
@@ -439,6 +444,7 @@ export default {
     Class16,
     Class17,
     Class18,
+    Class19,
   },
   
   data() {
