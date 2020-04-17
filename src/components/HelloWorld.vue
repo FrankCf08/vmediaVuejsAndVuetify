@@ -420,8 +420,11 @@
     <div v-show="visible" id="class20">
       <Class20/>
     </div>
-    <div id="class21">
+    <div v-show="visible" id="class21">
       <Class21/>
+    </div>
+    <div id="class22">
+      <Class22/>
     </div>
   </div>
 </template>
@@ -439,6 +442,7 @@ import Class18 from "../classes/class18"
 import Class19 from "../classes/class19"
 import Class20 from "../classes/class20"
 import Class21 from "../classes/class21"
+import Class22 from "../classes/class22"
 
 export default {
   name: "HelloWorld",
@@ -455,6 +459,7 @@ export default {
     Class19,
     Class20,
     Class21,
+    Class22,
   },
   
   data() {
