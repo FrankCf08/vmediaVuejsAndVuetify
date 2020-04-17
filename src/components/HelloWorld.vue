@@ -211,8 +211,8 @@
               <v-container fluid>
                 <v-row>
                   <v-col
-                    v-for="person in people"
-                    :key="person.cell+'-'+ person.name.first + '-class10'"
+                    v-for="(person, index) in people"
+                    :key="index + '-'+person.cell+'-'+ person.name.first + '-class10'"
                     class="d-flex child-flex"
                     cols="12"
                     sm="6"
@@ -263,8 +263,8 @@
     </div>
     <div v-show="visible" id="class14">
       <Class14 
-        v-for="person in people"
-        :key="person.id.value"
+        v-for="(person, index) in people"
+        :key="index+'-'+person.id.value"
         :name="person.name"
         :email="person.email"
         :picture="person.picture.large"
@@ -423,8 +423,11 @@
     <div v-show="visible" id="class21">
       <Class21/>
     </div>
-    <div id="class22">
+    <div v-show="visible" id="class22">
       <Class22/>
+    </div>
+    <div id="class23">
+      <Class23/>
     </div>
   </div>
 </template>
@@ -443,6 +446,7 @@ import Class19 from "../classes/class19"
 import Class20 from "../classes/class20"
 import Class21 from "../classes/class21"
 import Class22 from "../classes/class22"
+import Class23 from "../classes/class23"
 
 export default {
   name: "HelloWorld",
@@ -460,6 +464,7 @@ export default {
     Class20,
     Class21,
     Class22,
+    Class23,
   },
   
   data() {
