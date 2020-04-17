@@ -18,10 +18,26 @@
    </v-row>
   </v-container>
   <v-divider></v-divider> 
-  <v-container fluid>
+  <v-container 
+    v-if="searchUser"
+    fluid>
    <v-row>
     <v-col
       v-for="(person, index) in searchUsersFunction"
+      :key="index"
+      cols="12"
+      sm="4"
+      lg="3">
+      <User :person="person"></User>
+    </v-col>
+   </v-row>
+  </v-container>
+   <v-container 
+    v-else
+    fluid>
+   <v-row>
+    <v-col
+      v-for="(person, index) in people"
       :key="index"
       cols="12"
       sm="4"
@@ -50,7 +66,7 @@ export default {
  },
  computed:{
    searchUsersFunction(){     
-     return this.people.filter((user) =>{              
+     return this.people.filter((user) =>{   
        return user.name.first.includes(this.searchUser)
      })
    }

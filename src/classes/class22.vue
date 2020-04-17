@@ -20,7 +20,7 @@ export default {
  data(){
   return{
    peopleUsers:[],
-   peopleRequestURL: 'https://randomuser.me/api/?results=500',
+   peopleRequestURL: 'https://randomuser.me/api/?results=50',
   }
  },
  mounted(){
