@@ -441,6 +441,9 @@
     <div id="class27">
       <Class27/>
     </div>
+    <div id="class28">
+      <Class28/>
+    </div>
   </div>
 </template>
 
@@ -463,6 +466,7 @@ import Class24 from "../classes/class24"
 import Class25 from "../classes/class25"
 import Class26 from "../classes/class26"
 import Class27 from "../classes/class27"
+import Class28 from "../classes/class28"
 
 export default {
   name: "HelloWorld",
@@ -485,6 +489,7 @@ export default {
     Class25,
     Class26,
     Class27,
+    Class28,
   },
   
   data() {
