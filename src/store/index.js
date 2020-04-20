@@ -25,5 +25,11 @@ export const store = new Vuex.Store({
   completedDuties: (state) => {
    return state.duties.filter(duty => duty.done)
   }
+ },
+ mutations:{
+  increaseCounter: (state) =>{
+   return state.counter++
+  },
+  decreaseCounter: (state) => state.counter--
  }
 })

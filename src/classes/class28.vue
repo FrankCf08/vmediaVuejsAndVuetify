@@ -12,18 +12,21 @@
 import {mapGetters} from 'vuex'
 
 export default {
- // /* First way of using getters from store/index.js */
- // computed:{
- //  completedDuties(){
- //   // /* Normal filtering */
- //   // return this.$store.state.duties.filter( (duty) =>{
- //   //  return duty.done
- //   // })
-   
- //   /* Using getter from store index */
- //   return this.$store.getters.completedDuties
- //  }
- // }
+ /* First way of using getters from store/index.js */
+//  computed:{
+//   completedDuties(){
+//    // /* Normal filtering */
+//    // return this.$store.state.duties.filter( (duty) =>{
+//    //  return duty.done
+//    // })
+//   }
+   /* Second way: Using getter from store index */
+//   computed:{
+//    completedDuties(){
+//      return this.$store.getters.completedDuties
+//    }
+//   }
+//  }
 
  computed: mapGetters(['completedDuties'])
 }
