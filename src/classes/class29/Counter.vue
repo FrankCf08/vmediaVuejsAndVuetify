@@ -25,8 +25,12 @@
 import {mapState, mapMutations} from 'vuex'
 
 export default {
- methods: mapMutations(['increaseCounter','decreaseCounter']),
- computed:mapState(['counter']) 
+ methods: {
+  ...mapMutations(['increaseCounter','decreaseCounter'])
+ },
+ computed:{
+  ...mapState(['counter'])
+ } 
  // methods:{
  //  counterIncreased(){
  //   this.$store.commit('increaseCounter')
