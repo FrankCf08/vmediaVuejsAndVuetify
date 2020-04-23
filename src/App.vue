@@ -1,10 +1,12 @@
 <template>
-  <v-app>
-    <MainNav />
-    <v-content>
-      <HelloWorld />
-    </v-content>
-  </v-app>
+  <v-card>
+    <v-app>
+      <MainNav />
+      <v-content>
+        <HelloWorld />
+      </v-content>
+    </v-app>
+  </v-card>
 </template>
 
 <script>
