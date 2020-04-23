@@ -423,7 +423,7 @@
     <div v-show="visible" id="class21">
       <Class21/>
     </div>
-    <div id="class22">
+    <div v-show="visible" id="class22">
       <Class22/>
     </div>
     <div v-show="visible" id="class23">
@@ -447,7 +447,7 @@
     <div v-show="visible" id="class29">
       <Class29/>
     </div>
-    <div v-show="visible" id="class30">
+    <div id="class30">
       <Class30/>
     </div>
     <div v-show="visible" id="class31">

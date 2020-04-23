@@ -2,13 +2,14 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {shopItemsState, shopItemsMutations} from './modules/shopItems'
 import {basketMutations} from "./modules/basket"
+import counter from "./modules/counter"
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
  state:{
   ...shopItemsState,
-  counter:0,
+  // counter:0,
   person:{
    name:'Frank',
    surname: 'Cruz',
@@ -43,12 +44,15 @@ export const store = new Vuex.Store({
  mutations:{
   ...shopItemsMutations,
   ...basketMutations,
-  increaseCounter: (state) =>{
-   return state.counter++
-  },
-  decreaseCounter: (state) => state.counter--,
-  counterIncreased: (state, value) => state.counter+=value,
-  counterDecreased: (state, value) => state.counter -= value,
+
+  /*MUtations functions sent to counter.js */
+  // increaseCounter: (state) =>{
+  //  return state.counter++
+  // },
+  // decreaseCounter: (state) => state.counter--,
+  // counterIncreased: (state, value) => state.counter+=value,
+  // counterDecreased: (state, value) => state.counter -= value,
+
   /*Send to shopItems.js */
   // addProductToList: (state, product) => state.shopItems.push(product),
   /*Send to basket.js */
@@ -56,12 +60,16 @@ export const store = new Vuex.Store({
   // deleteProductFromBasket: (state, indexItem) => state.basket.splice(indexItem, 1)
  },
  actions:{
-  increaseAsync: (context) => context.commit('increaseCounter'),
-  decreaseAsync: (context) => {
-   setTimeout(()=> context.commit('decreaseCounter'), 2000)
-  },
-  increaseCounterAsync: (context, value) => context.commit('counterIncreased', value),
-  // decreaseCounterAsync:  (context, Objectvalue)=> commit('counterDecreased', Objectvalue.counter )
-  decreaseCounterAsync: ({commit}, {counter} ) => commit('counterDecreased', counter )
+  /*Actions functions sent to counter.js */
+  // increaseAsync: (context) => context.commit('increaseCounter'),
+  // decreaseAsync: (context) => {
+  //  setTimeout(()=> context.commit('decreaseCounter'), 2000)
+  // },
+  // increaseCounterAsync: (context, value) => context.commit('counterIncreased', value),
+  // // decreaseCounterAsync:  (context, Objectvalue)=> commit('counterDecreased', Objectvalue.counter )
+  // decreaseCounterAsync: ({commit}, {counter} ) => commit('counterDecreased', counter )
  },
+ modules:{
+  counter,
+ }
 })

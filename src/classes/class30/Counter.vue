@@ -2,7 +2,7 @@
  <div>
   <v-container class="UsingMethods">
    <h1>UsingMethods and dispatch</h1>
-   <h3>Counter <span class="blue--text small">{{counter}}</span> </h3>
+   <h3>Counter <span class="blue--text small">{{counter.counter}}</span> </h3>
   </v-container>
   <v-container fluid>
    <v-row>
@@ -26,7 +26,7 @@
   </v-container>
   <v-container class="UsingMapActions">
    <h1>UsingMapActions</h1>
-   <h3>Counter <span class="blue--text small">{{counter}}</span> </h3>
+   <h3>Counter <span class="blue--text small">{{counter.counter}}</span> </h3>
   </v-container>
   <v-container fluid>
    <v-row>
@@ -48,7 +48,7 @@
   </v-container>
    <v-container class="UsingMethods">
    <h1>Using mapActions and Passing values(values or Objects)</h1>
-   <h3>Counter <span class="blue--text small">{{counter}}</span> </h3>
+   <h3>Counter <span class="blue--text small">{{counter.counter}}</span> </h3>
   </v-container>
   <v-container fluid>
    <v-row>
