@@ -3,7 +3,7 @@
     <v-app>
       <MainNav />
       <v-content>
-        <HelloWorld />
+        <router-view />
       </v-content>
     </v-app>
   </v-card>
@@ -11,14 +11,12 @@
 
 <script>
 import MainNav from "./navBars/mainNavBar";
-import HelloWorld from "./components/HelloWorld";
 
 export default {
   name: "App",
 
   components: {
-    MainNav,
-    HelloWorld
+    MainNav
   },
 
   data: () => ({

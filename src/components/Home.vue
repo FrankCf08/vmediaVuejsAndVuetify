@@ -447,10 +447,10 @@
     <div v-show="visible" id="class29">
       <Class29/>
     </div>
-    <div id="class30">
+    <div v-show="visible" id="class30">
       <Class30/>
     </div>
-    <div v-show="visible" id="class31">
+    <div id="class31">
       <Class31/>
     </div>
   </div>
@@ -481,7 +481,7 @@ import Class30 from "../classes/class30"
 import Class31 from "../classes/class31"
 
 export default {
-  name: "HelloWorld",
+  name: "Home",
 
   components:{
     Class11,

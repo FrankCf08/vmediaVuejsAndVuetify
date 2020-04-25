@@ -11,13 +11,14 @@ module.exports = {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
-    "parserOptions": {
+    parserOptions: {
         "ecmaVersion": 2018,
-        "sourceType": "module"
+        "sourceType": "module",
+        parser: "babel-eslint"
     },
     "plugins": [
         "vue"
     ],
     "rules": {
-    }
+    },
 };
