@@ -26,7 +26,7 @@
        <v-col>
         <v-btn
         class="mr-2 mt-4"
-        color="primary" 
+        color="warning" 
         to="/home">
         Home
         </v-btn>
@@ -35,6 +35,12 @@
          color="success" 
          to="/singin">
          Sign In
+        </v-btn>
+        <v-btn
+         class="mr-2 ml-2 mt-4"
+         color="primary" 
+         to="/singup">
+         Sign Up
         </v-btn>
         <v-btn
          class="ml-2 mt-4"

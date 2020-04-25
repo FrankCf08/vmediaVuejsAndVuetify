@@ -22,11 +22,15 @@ const router = new VueRouter({
      name: "SignIn",
      component: () => import("../components/SignIn.vue")
    },
+   {
+    path: "/singup",
+    name: "SignUp",
+    component: () => import("../components/SingUp.vue")
+   },
    { 
     path: "*", 
     name: "NotFound",
     component: () => import("../components/NotFound.vue")
-
    }
 
   ]
