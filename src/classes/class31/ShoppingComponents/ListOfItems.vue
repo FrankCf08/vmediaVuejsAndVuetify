@@ -24,7 +24,13 @@
          <v-list-item-action>
           <v-btn
            color="success"
-           class="mr-2 ml-4 mb-2"
+           class="mr-2 ml-4 mb-2 hidden-md-and-up"
+           @click="addProduct(index)"
+          >Add to <br> Basket
+          </v-btn>
+          <v-btn
+           color="success"
+           class="mr-2 ml-4 mb-2 hidden-sm-and-down"
            @click="addProduct(index)"
           >Add to Basket
           </v-btn>
