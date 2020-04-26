@@ -42,12 +42,6 @@
          to="/singup">
          Sign Up
         </v-btn>
-        <v-btn
-         class="ml-2 mt-4"
-         color="error" 
-         to="/pageNotFound">
-         Not Found <br> Page
-        </v-btn>
        </v-col>
       </v-row>
      </v-container>
