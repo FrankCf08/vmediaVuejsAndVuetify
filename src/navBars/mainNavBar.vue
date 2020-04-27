@@ -132,7 +132,7 @@ export default {
 	methods:{
 		sendToMe(path){
 			/*This If statement allows me to stop the "Duplicated Error showed when the"
-					same button was pressed*/
+          same button was pressed*/      
 			if (this.$route.path !== path) this.$router.push(path)
 		}
 	},

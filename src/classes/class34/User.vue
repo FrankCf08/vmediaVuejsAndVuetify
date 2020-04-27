@@ -1,0 +1,55 @@
+<template>
+ <div>
+		<v-container>
+			<v-row>
+				<v-col>
+					<v-card
+						class="mx-auto"
+						max-width="500">
+						<v-img
+							class="white--text align-end"
+							height="200"
+							src="https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+							>
+							<v-card-title>{{nameID}}</v-card-title>
+						</v-img>
+					</v-card>
+				</v-col>
+			</v-row>
+		</v-container>
+  <v-card>
+   <v-footer
+				fixed
+				class="font-weight-medium"
+    >
+				<v-col
+					class="text-center"
+					cols="12"
+				>
+					<v-btn
+						color="success"
+						@click="backButton">
+						Go back
+					</v-btn>
+				</v-col>
+   </v-footer>
+  </v-card>
+ </div>
+</template>
+<script>
+export default {
+	props:{
+		person:Object,
+	},
+ data(){
+  return{
+   nameID: this.$route.params.id
+  }
+	},
+	methods:{
+		backButton(){
+			this.$router.push('/classes')
+		}
+	}
+}
+</script>

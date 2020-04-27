@@ -27,6 +27,16 @@ const router = new VueRouter({
     name: "SignUp",
     component: () => import("../components/SingUp.vue")
    },
+   {
+    path: "/classes",
+    name: "Classes",
+    component: () => import("../components/Classes.vue")
+   },
+   {
+    path: "/user/:id",
+    name: "User",
+    component: () => import("../classes/class34/User.vue")
+   },
    { 
     path: "*", 
     name: "NotFound",
