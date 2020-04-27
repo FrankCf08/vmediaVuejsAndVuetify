@@ -27,19 +27,19 @@
         <v-btn
         class="mr-2 mt-4"
         color="warning" 
-        @click="sendMeTo('home')">
+        @click="sendMeTo(items.homePath)">
         Home
         </v-btn>
         <v-btn
          class="mr-2 ml-2 mt-4"
          color="success" 
-         @click="sendMeTo('singin')">
+         @click="sendMeTo(items.signinPath)">
          Sign In
         </v-btn>
         <v-btn
          class="mr-2 ml-2 mt-4"
          color="primary" 
-         @click="sendMeTo('singup')">
+         @click="sendMeTo(items.singupPath)">
          Sign Up
         </v-btn>
        </v-col>
@@ -52,9 +52,18 @@
 </template>
 <script>
 export default {
+ data(){
+  return{
+   items:{
+    homePath:'/home',
+    signinPath:'/signin',
+    singupPath:'/singup',
+   }
+  }
+ },
  methods:{
-  sendMeTo(pageSentTo){
-   this.$router.push(`/${pageSentTo}`)
+  sendMeTo(path){
+   this.$router.push(path)
   }
  }
 }

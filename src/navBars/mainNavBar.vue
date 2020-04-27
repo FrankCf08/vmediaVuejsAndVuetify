@@ -106,7 +106,7 @@ export default {
     },
     { 
      icon: "mdi-lock-open-outline", 
-     path: "/singin", 
+     path: "/signin", 
      text: "Sign In" 
     },
     { 
