@@ -14,8 +14,7 @@
      <v-list-item
         v-for="(item, i) in items"
         :key="`${i}-${item.text}`"
-        :to="item.path"
-        link
+								@click="sendToMe(item.path)"
       >
       <v-list-item-icon>
        <v-icon>{{ item.icon }}</v-icon>
@@ -47,6 +46,7 @@
     </v-list-item-group>
    </v-list>
   </v-navigation-drawer>
+
   <v-app-bar 
     app
     clipped-left 
@@ -66,7 +66,7 @@
      text
      v-for="(item, i) in items"
      :key="i"
-     :to="item.path"
+     @click="sendToMe(item.path)"
      large
      >
      <v-icon 
@@ -98,20 +98,6 @@ export default {
  data() {
   return {
    drawer: false,
-  //  items: [
-  //       { icon: 'mdi-trending-up', text: 'Most Popular' },
-  //       { icon: 'mdi-youtube-subscription', text: 'Subscriptions' },
-  //       { icon: 'mdi-history', text: 'History' },
-  //       { icon: 'mdi-playlist-play', text: 'Playlists' },
-  //       { icon: 'mdi-clock', text: 'Watch Later' },
-  //     ],
-      items2: [
-        { picture: 28, text: 'Joseph' },
-        { picture: 38, text: 'Apple' },
-        { picture: 48, text: 'Xbox Ahoy' },
-        { picture: 58, text: 'Nokia' },
-        { picture: 78, text: 'MKBHD' },
-      ],
    items: [
     { 
      icon: "mdi-home", 
@@ -142,7 +128,14 @@ export default {
     }
    ]
   };
- },
+	},
+	methods:{
+		sendToMe(path){
+			/*This If statement allows me to stop the "Duplicated Error showed when the"
+					same button was pressed*/
+			if (this.$route.path !== path) this.$router.push(path)
+		}
+	},
  watch: {
   group() {
    this.drawer = false;

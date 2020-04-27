@@ -27,19 +27,19 @@
         <v-btn
         class="mr-2 mt-4"
         color="warning" 
-        to="/home">
+        @click="sendMeTo('home')">
         Home
         </v-btn>
         <v-btn
          class="mr-2 ml-2 mt-4"
          color="success" 
-         to="/singin">
+         @click="sendMeTo('singin')">
          Sign In
         </v-btn>
         <v-btn
          class="mr-2 ml-2 mt-4"
          color="primary" 
-         to="/singup">
+         @click="sendMeTo('singup')">
          Sign Up
         </v-btn>
        </v-col>
@@ -50,3 +50,12 @@
   </v-container>
  </div>
 </template>
+<script>
+export default {
+ methods:{
+  sendMeTo(pageSentTo){
+   this.$router.push(`/${pageSentTo}`)
+  }
+ }
+}
+</script>
