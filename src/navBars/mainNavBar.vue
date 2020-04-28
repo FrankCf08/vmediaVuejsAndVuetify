@@ -61,6 +61,19 @@
 
    <v-spacer></v-spacer>
 
+			<v-toolbar-items class="hidden-sm-and-up">
+    <v-btn
+     icon
+     v-for="(website, index) in websites"
+     :key="`${index}-${website.text}`"
+     target="_blank"
+     :href="website.href"
+    >
+     <v-icon 
+      >{{ website.icon }} </v-icon>
+    </v-btn>
+   </v-toolbar-items>
+
    <v-toolbar-items class="hidden-xs-only">
     <v-btn
      text
@@ -103,6 +116,11 @@ export default {
      icon: "mdi-home", 
      path: "/home", 
      text: "Home" 
+    },
+    { 
+     icon: "mdi-laptop", 
+     path: "/classes", 
+     text: "Classes" 
     },
     { 
      icon: "mdi-lock-open-outline", 

@@ -6,7 +6,9 @@
     align="center"
     justify="center">
     <v-col
-     cols="4"
+					class="text-center"
+     cols="12"
+					sm="4"
      v-for="(person, i) in people"
      :key="i">
      <router-link
@@ -14,6 +16,7 @@
       :to="`/user/${person.name.first}-${person.name.last}`"
       >
       <v-btn
+							width="220"
        color="primary"
        large
        v-text="`${person.name.first} ${person.name.last}`">
@@ -28,10 +31,12 @@
 import axios from 'axios'
 
 export default {
+	name:'Class34',
+
  data(){
   return{
    people: [],
-   peopleURL: 'https://randomuser.me/api/?results=10'
+   peopleURL: 'https://randomuser.me/api/?results=50'
   }
  },
  mounted(){
