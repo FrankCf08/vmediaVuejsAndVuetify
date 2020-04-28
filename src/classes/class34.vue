@@ -17,7 +17,7 @@
       >
       <v-btn
 							width="220"
-       color="primary"
+							:style="{background: randomColor(), color: 'white'}"
        large
        v-text="`${person.name.first} ${person.name.last}`">
       </v-btn>
@@ -55,7 +55,10 @@ export default {
     .catch(error => {
      console.error('errorGetPeople', error)
     })
-  }
- },
+  },
+		randomColor(){
+				return '#'+(Math.random()*0xFFFFFF<<0).toString(16)
+			}
+	}
 }
 </script>
