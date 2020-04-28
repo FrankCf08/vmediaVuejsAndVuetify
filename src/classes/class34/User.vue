@@ -50,6 +50,11 @@ export default {
 		backButton(){
 			this.$router.push('/classes')
 		}
+	},
+	watch:{
+		'$route'(to){
+			this.nameID = to.params.id
+		}
 	}
 }
 </script>
