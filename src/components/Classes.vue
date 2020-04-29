@@ -1,19 +1,19 @@
 <template>
 	<div>
-		<div id="class34">
-				<Class34/>
+		<div id="class35">
+				<Class35/>
 		</div>
 	</div>
 </template>
 
 <script>
-import Class34 from "../classes/class34"
+import Class35 from "../classes/class35"
 
 export default {
   name: "Classes",
 
   components:{
-    Class34,
+    Class35,
   },
 }
 </script>

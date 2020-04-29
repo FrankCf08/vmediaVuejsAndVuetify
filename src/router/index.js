@@ -30,7 +30,14 @@ const router = new VueRouter({
    {
     path: "/classes",
     name: "Classes",
-    component: () => import("../components/Classes.vue")
+    component: () => import("../components/Classes.vue"),
+    children:[
+      {
+        path:'userFrank',
+        name:'UserFrank',
+        component: () => import("../classes/class35/User.vue")
+      }
+    ]
    },
    {
     path: "/user/:id",
