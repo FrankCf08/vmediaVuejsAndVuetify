@@ -2,41 +2,22 @@
  <div>
   <v-container>
    <CompanyUsers
-    :people="peopleUsers">
+    :people="randomPeople.people">
    </CompanyUsers>
   </v-container>
  </div>
 </template>
 <script>
 import CompanyUsers from "./class22/CompanyUsers"
-import axios from "axios"
+import { mapState } from 'vuex'
 
 export default {
 
  components:{
   CompanyUsers,
  },
-
- data(){
-  return{
-   peopleUsers:[],
-   peopleRequestURL: 'https://randomuser.me/api/?results=150',
-  }
- },
- mounted(){
-  this.getPeopleUsers()
- },
- methods:{
-  getPeopleUsers(){
-   axios
-    .request({
-     method:'get',
-     url: this.peopleRequestURL
-    })
-    .then(response => {     
-     this.peopleUsers = response.data.results
-    })
-  }
+ computed:{
+   ...mapState(['randomPeople'])
  },
 }
 </script>

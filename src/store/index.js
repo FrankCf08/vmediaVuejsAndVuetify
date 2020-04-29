@@ -3,13 +3,13 @@ import Vuex from 'vuex'
 import {shopItemsState, shopItemsMutations} from './modules/shopItems'
 import {basketMutations} from "./modules/basket"
 import counter from "./modules/counter"
+import randomPeople from "./modules/randomPeople"
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
  state:{
   ...shopItemsState,
-  // counter:0,
   person:{
    name:'Frank',
    surname: 'Cruz',
@@ -24,14 +24,7 @@ export const store = new Vuex.Store({
    {name:'wash cothes', priority: 'high', done: false, timeTaken: 16},
    {name:'Do the wash-up', priority: 'high', done: false, timeTaken: 192},
   ],
-  /*Send to shopItems.js */ 
-  // shopItems:[
-  //  {name:'Coca-Cola', price: 12},
-  //  {name:'Inka-Cola', price: 8.5 },
-  //  {name:'Concordia', price: 3.9},
-  //  {name:'Yogurt', price: 4.9},
-  //  {name:'Chesse', price: 5.4},
-  // ],
+  /*shopItems was sent to shopItems.js */ 
   basket:[],
  },
  getters:{
@@ -68,8 +61,10 @@ export const store = new Vuex.Store({
   // increaseCounterAsync: (context, value) => context.commit('counterIncreased', value),
   // // decreaseCounterAsync:  (context, Objectvalue)=> commit('counterDecreased', Objectvalue.counter )
   // decreaseCounterAsync: ({commit}, {counter} ) => commit('counterDecreased', counter )
+
  },
  modules:{
   counter,
+  randomPeople,
  }
 })

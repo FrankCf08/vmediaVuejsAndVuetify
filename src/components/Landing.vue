@@ -23,20 +23,44 @@
      <v-container
       class="mt-8">
       <v-row>
-       <v-col>
+       <v-col
+        cols="12"
+        sm="3">
         <v-btn
+        width="180"
         class="mr-2 mt-4"
         color="warning" 
         @click="sendMeTo(items.homePath)">
-        Home
+        Store
         </v-btn>
+       </v-col>
+       <v-col
+        cols="12"
+        sm="3">
         <v-btn
+        width="180"
+        class="mr-2 mt-4 white--text"
+        color="indigo"
+        @click="sendMeTo(items.searchPeople)">
+        Filter People
+        </v-btn>
+       </v-col>
+       <v-col
+        cols="12"
+        sm="3">
+        <v-btn
+         width="180"
          class="mr-2 ml-2 mt-4"
          color="success" 
          @click="sendMeTo(items.signinPath)">
          Sign In
         </v-btn>
+       </v-col>
+       <v-col
+        cols="12"
+        sm="3">
         <v-btn
+         width="180"
          class="mr-2 ml-2 mt-4"
          color="primary" 
          @click="sendMeTo(items.singupPath)">
@@ -55,7 +79,8 @@ export default {
  data(){
   return{
    items:{
-    homePath:'/home',
+    homePath:'/store',
+    searchPeople:'/searchPeople',
     signinPath:'/signin',
     singupPath:'/singup',
    }

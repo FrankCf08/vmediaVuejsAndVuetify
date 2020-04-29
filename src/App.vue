@@ -10,7 +10,9 @@
 </template>
 
 <script>
-import MainNav from "./navBars/mainNavBar";
+import axios from 'axios'
+import MainNav from "./navBars/mainNavBar"
+import { mapActions } from 'vuex'
 
 export default {
   name: "App",
@@ -19,8 +21,28 @@ export default {
     MainNav
   },
 
-  data: () => ({
-    //
-  })
+  data(){
+    return{
+      people:[],
+      peopleURL: 'https://randomuser.me/api/?results=50'
+    }
+  },
+  mounted(){
+    this.getPeople()
+  },
+  methods:{
+    ...mapActions(['setRandomPeople']),
+    getPeople(){
+      axios
+        .request({
+          method:'get',
+          url: this.peopleURL,
+        })
+        .then( response => {
+          this.people = response.data.results
+          this.setRandomPeople(this.people)
+        })
+    }
+  },
 };
 </script>

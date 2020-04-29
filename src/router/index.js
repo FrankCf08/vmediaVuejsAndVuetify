@@ -13,9 +13,14 @@ const router = new VueRouter({
     meta: { requiresAuth: true }
    },
    {
-     path: "/home",
-     name: "Home",
-     component: () => import("../components/Home.vue"),
+     path: "/store",
+     name: "Store",
+     component: () => import("../components/Store.vue"),
+   },
+   {
+    path: "/searchPeople",
+    name: "SearchPeople",
+    component: () => import("../components/SearchPeople.vue"),
    },
    {
      path: "/signin",

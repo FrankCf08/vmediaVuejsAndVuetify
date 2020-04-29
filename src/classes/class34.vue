@@ -9,7 +9,7 @@
 					class="text-center"
      cols="12"
 					sm="4"
-     v-for="(person, i) in people"
+     v-for="(person, i) in randomPeople.people"
      :key="i">
      <router-link
       tag="button"
@@ -28,37 +28,18 @@
  </div>
 </template>
 <script>
-import axios from 'axios'
+import { mapState } from 'vuex'
 
 export default {
 	name:'Class34',
 
- data(){
-  return{
-   people: [],
-   peopleURL: 'https://randomuser.me/api/?results=50'
-  }
- },
- mounted(){
-  this.getPeople()
+ computed:{
+   ...mapState(['randomPeople'])
  },
  methods:{
-  getPeople(){
-   axios
-    .request({
-     method:'get',
-     url: this.peopleURL
-    })
-    .then(response =>{
-     this.people = response.data.results    
-    })
-    .catch(error => {
-     console.error('errorGetPeople', error)
-    })
-  },
-		randomColor(){
+   randomColor(){
 				return '#'+(Math.random()*0xFFFFFF<<0).toString(16)
-			}
-	}
+			},
+ }
 }
 </script>

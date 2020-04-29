@@ -10,7 +10,7 @@
     nav>
     <v-list-item-group 
      active-class="blue--text text--accent-4">
-     <v-list-item-title class="grey--text text--darken-1">Pages</v-list-item-title>
+     <v-list-item-title class="grey--text text--darken-1">Projects</v-list-item-title>
      <v-list-item
         v-for="(item, i) in items"
         :key="`${i}-${item.text}`"
@@ -114,8 +114,13 @@ export default {
    items: [
     { 
      icon: "mdi-home", 
-     path: "/home", 
-     text: "Home" 
+     path: "/store", 
+     text: "Store" 
+    },
+    { 
+     icon: "mdi-account-search-outline", 
+     path: "/searchPeople", 
+     text: "Search People" 
     },
     { 
      icon: "mdi-laptop", 
