@@ -66,8 +66,9 @@ export default {
  },
  computed:{
    searchUsersFunction(){     
-     return this.people.filter((user) =>{   
-       return user.name.first.includes(this.searchUser)
+     return this.people.filter( user =>{       
+       const person = `${user.name.first} ${user.name.last}`          
+       return person.includes(this.searchUser)
      })
    }
  }

@@ -31,7 +31,6 @@
         <v-btn
         width="180"
         color="error"
-        max-width="150" 
         @click="sendMeTo(items.homePath)">
         Store
         </v-btn>
@@ -42,7 +41,6 @@
         <v-btn
         width="180"
         color="success"
-        max-width="150" 
         @click="sendMeTo(items.searchPeople)">
         Filter People
         </v-btn>
@@ -53,7 +51,6 @@
         <v-btn
          width="180"
          color="primary"
-                 max-width="150"  
          @click="sendMeTo(items.signinPath)">
          Sign In
         </v-btn>
@@ -64,8 +61,7 @@
         <v-btn
          width="180"
          color="yellow"
-         max-width="150"
-         class="white--text"  
+         class="white--text"
          @click="sendMeTo(items.singupPath)">
          Sign Up
         </v-btn>
