@@ -9,11 +9,13 @@
       >
       Welcome to this <br>Awesome App
      </h1>
-     <v-card 
+     <v-card
+      elevation="12" 
       class="mx-auto mt-8" 
-      max-width="300">
+      max-width="300"
+      >
       <blockquote
-      class="font-weight-light	"
+      class="font-weight-light pt-4 pb-4"
       :class="[$vuetify.breakpoint.mdAndUp ? 'headline' : 'title']"
       >
       This project is based on <br />
@@ -28,8 +30,8 @@
         sm="3">
         <v-btn
         width="180"
-        class="mr-2 mt-4"
-        color="warning" 
+        color="error"
+        max-width="150" 
         @click="sendMeTo(items.homePath)">
         Store
         </v-btn>
@@ -39,8 +41,8 @@
         sm="3">
         <v-btn
         width="180"
-        class="mr-2 mt-4 white--text"
-        color="indigo"
+        color="success"
+        max-width="150" 
         @click="sendMeTo(items.searchPeople)">
         Filter People
         </v-btn>
@@ -50,8 +52,8 @@
         sm="3">
         <v-btn
          width="180"
-         class="mr-2 ml-2 mt-4"
-         color="success" 
+         color="primary"
+                 max-width="150"  
          @click="sendMeTo(items.signinPath)">
          Sign In
         </v-btn>
@@ -61,8 +63,9 @@
         sm="3">
         <v-btn
          width="180"
-         class="mr-2 ml-2 mt-4"
-         color="primary" 
+         color="yellow"
+         max-width="150"
+         class="white--text"  
          @click="sendMeTo(items.singupPath)">
          Sign Up
         </v-btn>
