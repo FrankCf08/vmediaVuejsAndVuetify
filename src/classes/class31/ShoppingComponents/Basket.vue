@@ -36,7 +36,16 @@
                  <strong>{{item.name}}</strong>
                 </v-list-item-title>
                 <v-list-item-subtitle>
-                 Price: S/. {{item.price}} 
+                 Price: S/. {{item.price.toFixed(2)}} 
+                </v-list-item-subtitle>
+               </v-list-item-content>
+               <v-list-item-content
+                align="center">
+                <v-list-item-title>
+                 <strong> Quantity: </strong>
+                </v-list-item-title>
+                <v-list-item-subtitle>
+                  {{item.quantity}}
                 </v-list-item-subtitle>
                </v-list-item-content>
                <v-list-item-action>
@@ -49,6 +58,22 @@
                 </v-btn>
                </v-list-item-action>
               </v-list-item>
+              <v-divider 
+               :key="`${index}-${index}`"
+               >
+              </v-divider>
+              <!-- <v-list-item-content
+               class="black--text"
+               :key="index+''+index"
+               align="center"
+               justify="center">
+               <v-list-item-title>
+                <strong> Total: </strong>
+               </v-list-item-title>
+               <v-list-item-subtitle>
+                 {{item.quantity}}
+               </v-list-item-subtitle>
+              </v-list-item-content> -->
              </template>
             </v-list-item-group>
            </v-list>
@@ -75,6 +100,6 @@ export default {
  computed:{
   ...mapState(['basket']),
   ...mapGetters(['totalCost']),
- }
+ },
 }
 </script>

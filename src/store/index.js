@@ -31,37 +31,14 @@ export const store = new Vuex.Store({
   completedDuties: (state) => {
    return state.duties.filter(duty => duty.done)
   },
-  totalCost: (state) => state.basket.reduce((total,product)=> total + product.price, 0)
+  totalCost: (state) => state.basket.reduce((total,product)=> total + (product.price*product.quantity), 0)
  },
  // Mutations are setters
  mutations:{
   ...shopItemsMutations,
   ...basketMutations,
-
-  /*MUtations functions sent to counter.js */
-  // increaseCounter: (state) =>{
-  //  return state.counter++
-  // },
-  // decreaseCounter: (state) => state.counter--,
-  // counterIncreased: (state, value) => state.counter+=value,
-  // counterDecreased: (state, value) => state.counter -= value,
-
-  /*Send to shopItems.js */
-  // addProductToList: (state, product) => state.shopItems.push(product),
-  /*Send to basket.js */
-  // addProductToBasket: (state, indexItem) => state.basket.push(state.shopItems[indexItem]),
-  // deleteProductFromBasket: (state, indexItem) => state.basket.splice(indexItem, 1)
  },
  actions:{
-  /*Actions functions sent to counter.js */
-  // increaseAsync: (context) => context.commit('increaseCounter'),
-  // decreaseAsync: (context) => {
-  //  setTimeout(()=> context.commit('decreaseCounter'), 2000)
-  // },
-  // increaseCounterAsync: (context, value) => context.commit('counterIncreased', value),
-  // // decreaseCounterAsync:  (context, Objectvalue)=> commit('counterDecreased', Objectvalue.counter )
-  // decreaseCounterAsync: ({commit}, {counter} ) => commit('counterDecreased', counter )
-
  },
  modules:{
   counter,

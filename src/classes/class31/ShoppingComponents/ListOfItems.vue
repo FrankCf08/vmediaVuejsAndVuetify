@@ -73,15 +73,20 @@ import { mapState, mapMutations } from 'vuex'
 export default {
  computed:{
   ...mapState([
-   'shopItems'
+   'shopItems',
+   'basket'
   ]),
  },
  methods:{
   ...mapMutations([
-    'addProductToBasket'
+    'addProductToBasket',
+    'increaseQuantity',
   ]),
-  addProduct(index){    
-    this.$store.commit('addProductToBasket', index)
+  addProduct(index){
+    const indexBasket =  this.basket.findIndex(item => item.name === this.shopItems[index].name)
+    
+    if(indexBasket >= 0) this.$store.commit('increaseQuantity', indexBasket)
+    else this.$store.commit('addProductToBasket', index) 
   },
  }
 }
