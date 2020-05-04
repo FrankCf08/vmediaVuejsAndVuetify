@@ -43,7 +43,7 @@ const router = new VueRouter({
 							component: () => import("../classes/class35/User.vue")
 					},
 					{
-						path:'team',
+						path:'team/:id',
 						name: 'Team',
 						component: () => import("../classes/class36/Team.vue"),
 						children:[

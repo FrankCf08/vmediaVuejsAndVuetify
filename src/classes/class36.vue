@@ -8,23 +8,23 @@
      <v-list>
       <v-list-item>
        <v-list-item-content>
-        <v-list-item-title> Home Class: </v-list-item-title>
+        <!-- <v-list-item-title> Home Class: </v-list-item-title>
         <v-list-item-subtitle
-         v-for="(id, i) in ids"
+         v-for="(route, i) in routes"
          :key="i">
          <router-link 
-          :to="`${id.routerLink}`"
-          v-text="id.text">
+          :to="`${route.routerLink}`"
+          v-text="route.text">
          </router-link>
+        </v-list-item-subtitle> -->
+        <v-list-item-subtitle>
+         <router-link :to="`/classes/team/${id}`"> Home </router-link>
         </v-list-item-subtitle>
         <!-- <v-list-item-subtitle>
-         <router-link to="/classes/team"> Home </router-link>
+         <router-link :to="`/classes/team/${id}/profile`"> Profile </router-link>
         </v-list-item-subtitle>
         <v-list-item-subtitle>
-         <router-link to="/classes/team/profile"> Profile </router-link>
-        </v-list-item-subtitle>
-        <v-list-item-subtitle>
-         <router-link to="/classes/team/bio"> Bio </router-link>
+         <router-link :to="`/classes/team/${id}/bio`"> Bio </router-link>
         </v-list-item-subtitle> -->
        </v-list-item-content>
       </v-list-item>
@@ -40,7 +40,8 @@ export default {
  data(){
   return{
    tab: null,
-   ids: [
+   id:'frank',
+   routes: [
     {
      routerLink: '/classes/team',
      text:'Home',
