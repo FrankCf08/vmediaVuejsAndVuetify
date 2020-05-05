@@ -10,10 +10,10 @@
      <v-list-item>
       <v-list-item-content>
        <v-list-item-subtitle>
-        <router-link :to="`/classes/team/${$route.params.id}/profile`"> Profile </router-link>
+        <router-link :to="`/classes/class36/team/${$route.params.id}/profile`"> Profile </router-link>
        </v-list-item-subtitle>
        <v-list-item-subtitle>
-        <router-link :to="`/classes/team/${$route.params.id}/bio`"> Bio </router-link>
+        <router-link :to="`/classes/class36/team/${$route.params.id}/bio`"> Bio </router-link>
        </v-list-item-subtitle>
       </v-list-item-content>
      </v-list-item>
@@ -25,6 +25,6 @@
 </template>
 <style scoped>
 	.alignment{
-		padding: 2rem 2rem 2rem 2rem;
+		padding: 2rem 1rem 2rem 1rem;
 	}
 </style>

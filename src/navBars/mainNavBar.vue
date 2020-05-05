@@ -1,5 +1,6 @@
 <template>
  <div>
+		<!-- NavBar -->
   <v-navigation-drawer 
 			app 
 			v-model="drawer" 
@@ -10,6 +11,7 @@
 					active-class="blue--text text--accent-4">
      <v-list-item-title class="grey--text text--darken-1">Projects</v-list-item-title>
      <template v-for="(item, i) in items">
+						<!-- Dropdown menu -->
       <v-list-group
        v-if="item.children"
        :key="i"
@@ -36,6 +38,7 @@
         </v-list-item-content>
        </v-list-item>
       </v-list-group>
+						<!-- Simple button -->
       <v-list-item 
 							v-else 
 							:key="i" 
@@ -49,7 +52,10 @@
        </v-list-item-content>
       </v-list-item>
      </template>
+
      <v-divider></v-divider>
+
+					<!-- Website Links -->
      <v-list-item-title class="grey--text text--darken-1">Wesbites</v-list-item-title>
      <template v-for="website in websites">
       <v-list-item :key="website.text" target="_blank" :href="website.href" link>
@@ -95,6 +101,7 @@
      <v-menu
 						v-if="item.children" 
 						:key="i"
+						open-on-hover
 						offset-y>
       <template
 							v-slot:activator="{ on }">
@@ -170,8 +177,8 @@ export default {
 							path: "/classes/class35" 
 						},
 						{ 
-							text: "Class 37",
-							path: "/classes"
+							text: "Class 36",
+							path: "/classes/class36"
 						}
 					]
     },
