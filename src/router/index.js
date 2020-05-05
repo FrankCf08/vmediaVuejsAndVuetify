@@ -38,9 +38,16 @@ const router = new VueRouter({
     component: () => import("../components/Classes.vue"),
     children:[
 					{
-							path:'userFrank',
-							name:'UserFrank',
-							component: () => import("../classes/class35/User.vue")
+							path:'class35',
+							name:'Class35',
+							component: () => import("../classes/class35.vue"),
+							children:[
+								{
+									path:'',
+									component: () => import("../classes/class35/User.vue")
+								}
+
+							]
 					},
 					{
 						path:'team/:id',

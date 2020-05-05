@@ -1,6 +1,9 @@
 <template>
  <div>
-  <v-container>
+  <v-card
+   class="mx-auto alignment"
+   max-width="1200">
+   <h1>Child User Component:</h1>
    <v-row
     align="center"
     justify="center">
@@ -19,11 +22,14 @@
      </v-card>
     </v-col>
    </v-row>
-  </v-container>
+  </v-card>
  </div>
 </template>
 <style scoped>
  .cardTitle{
   color:blue;
  }
+ .alignment{
+		padding: 2rem 2rem 2rem 2rem;
+	}
 </style>

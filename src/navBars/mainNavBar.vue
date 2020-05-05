@@ -1,67 +1,83 @@
 <template>
  <div>
   <v-navigation-drawer 
-   app 
-   v-model="drawer" 
-   relative 
-   clipped>
-   <v-list
-    class="ml-2" 
-    nav>
+			app 
+			v-model="drawer" 
+			relative 
+			clipped>
+   <v-list nav class="ml-2">
     <v-list-item-group 
-     active-class="blue--text text--accent-4">
+					active-class="blue--text text--accent-4">
      <v-list-item-title class="grey--text text--darken-1">Projects</v-list-item-title>
-     <v-list-item
-        v-for="(item, i) in items"
-        :key="`${i}-${item.text}`"
-								@click="sendToMe(item.path)"
+     <template v-for="(item, i) in items">
+      <v-list-group
+       v-if="item.children"
+       :key="i"
+       v-model="item.model"
+       :prepend-icon="item.model ? item.icon : item['icon-alt']"
+       append-icon
       >
-      <v-list-item-icon>
-       <v-icon>{{ item.icon }}</v-icon>
-      </v-list-item-icon>
-
-      <v-list-item-content>
-       <v-list-item-title>{{ item.text }}</v-list-item-title>
-      </v-list-item-content>
-     </v-list-item>
-
+       <template v-slot:activator>
+        <v-list-item-content class="tex--center">
+         <v-list-item-title>{{ item.text }}</v-list-item-title>
+        </v-list-item-content>
+       </template>
+       <v-list-item 
+								dense 
+								v-for="(child, i) in item.children" 
+								:key="i"
+								@click="sendToMe(child.path)" 
+								link>
+        <v-list-item-action v-if="child.icon">
+         <v-icon>{{ child.icon }}</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+         <v-list-item-title>{{ child.text }}</v-list-item-title>
+        </v-list-item-content>
+       </v-list-item>
+      </v-list-group>
+      <v-list-item 
+							v-else 
+							:key="i" 
+							@click="sendToMe(item.path)" 
+							>
+       <v-list-item-action>
+        <v-icon>{{ item.icon }}</v-icon>
+       </v-list-item-action>
+       <v-list-item-content>
+        <v-list-item-title>{{ item.text }}</v-list-item-title>
+       </v-list-item-content>
+      </v-list-item>
+     </template>
      <v-divider></v-divider>
-
      <v-list-item-title class="grey--text text--darken-1">Wesbites</v-list-item-title>
-     <v-list-item
-      v-for="(item, i) in websites"
-      :key="i"
-      target="_blank"
-      :href="item.href"
-      link
-      >
-      <v-list-item-icon>
-       <v-icon>{{ item.icon }}</v-icon>
-      </v-list-item-icon>
-
-      <v-list-item-content>
-       <v-list-item-title>{{ item.text }}</v-list-item-title>
-      </v-list-item-content>
-     </v-list-item>
+     <template v-for="website in websites">
+      <v-list-item :key="website.text" target="_blank" :href="website.href" link>
+       <v-list-item-action>
+        <v-icon>{{ website.icon }}</v-icon>
+       </v-list-item-action>
+       <v-list-item-content>
+        <v-list-item-title>{{ website.text }}</v-list-item-title>
+       </v-list-item-content>
+      </v-list-item>
+     </template>
     </v-list-item-group>
    </v-list>
   </v-navigation-drawer>
 
   <v-app-bar 
-    app
-    clipped-left 
-    color="blue darken-1" 
-    dark src="@/assets/technology.jpeg">
+			app 
+			clipped-left 
+			color="blue darken-1" 
+			dark src="@/assets/technology.jpeg">
    <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
    <v-toolbar-title>
-    <router-link to="/" tag="span" style="cursor: pointer">
-     Frank Cruz Project
-    </router-link>
+    <router-link to="/" tag="span" style="cursor: pointer">Frank Cruz Project</router-link>
    </v-toolbar-title>
 
    <v-spacer></v-spacer>
 
-			<v-toolbar-items class="hidden-sm-and-up">
+   <v-toolbar-items class="hidden-sm-and-up">
     <v-btn
      icon
      v-for="(website, index) in websites"
@@ -69,35 +85,56 @@
      target="_blank"
      :href="website.href"
     >
-     <v-icon 
-      >{{ website.icon }} </v-icon>
+     <v-icon>{{ website.icon }}</v-icon>
     </v-btn>
    </v-toolbar-items>
 
    <v-toolbar-items class="hidden-xs-only">
-    <v-btn
-     text
-     v-for="(item, i) in items"
-     :key="i"
-     @click="sendToMe(item.path)"
-     large
-     >
-     <v-icon 
-      left 
-      >{{ item.icon }} </v-icon>
-     {{ item.text }}
-    </v-btn>
+    <template v-for="(item, i) in items">
+     <!-- Drop down menu -->
+     <v-menu
+						v-if="item.children" 
+						:key="i"
+						offset-y>
+      <template
+							v-slot:activator="{ on }">
+       <v-btn 
+								text 
+								dark
+								v-on="on"
+								>
+								<v-icon
+									> {{item['icon-alt']}}
+								</v-icon>
+								{{item.text}}</v-btn>
+      </template>
+      <v-list>
+       <v-list-item 
+								v-for="(child, index) in item.children" 
+								:key="index"
+								@click="sendToMe(child.path)">
+        <v-list-item-title>{{ child.text }}</v-list-item-title>
+       </v-list-item>
+      </v-list>
+     </v-menu>
+     <!-- Simple button link -->
+     <v-btn 
+						v-else 
+						:key="i" 
+						text 
+						@click="sendToMe(item.path)">
+      <v-icon left>{{ item.icon }}</v-icon>
+      {{item.text}}
+     </v-btn>
+    </template>
     <v-btn
      text
      v-for="(website, index) in websites"
      :key="`${index}-${website.text}`"
      target="_blank"
      :href="website.href"
-     large
     >
-     <v-icon 
-      left
-      >{{ website.icon }} </v-icon>
+     <v-icon left>{{ website.icon }}</v-icon>
      {{ website.text }}
     </v-btn>
    </v-toolbar-items>
@@ -112,30 +149,41 @@ export default {
   return {
    drawer: false,
    items: [
-    { 
-     icon: "mdi-home", 
-     path: "/store", 
-     text: "Store" 
+    {
+     icon: "mdi-home",
+     path: "/store",
+     text: "Store"
     },
-    { 
-     icon: "mdi-account-search-outline", 
-     path: "/searchPeople", 
-     text: "Search People" 
+    {
+     icon: "mdi-account-search-outline",
+     path: "/searchPeople",
+     text: "Search People"
     },
-    { 
-     icon: "mdi-laptop", 
-     path: "/classes", 
-     text: "Classes" 
+    {
+     icon: "mdi-chevron-up",
+     "icon-alt": "mdi-chevron-down",
+     text: "Classes",
+     model: false,
+     children: [
+						{ 
+							text: "Class 35",
+							path: "/classes/class35" 
+						},
+						{ 
+							text: "Class 37",
+							path: "/classes"
+						}
+					]
     },
-    { 
-     icon: "mdi-lock-open-outline", 
-     path: "/signin", 
-     text: "Sign In" 
+    {
+     icon: "mdi-lock-open-outline",
+     path: "/signin",
+     text: "Sign In"
     },
-    { 
-     icon: "mdi-lock-outline", 
-     path: "/singup", 
-     text: "Sign Up" 
+    {
+     icon: "mdi-lock-outline",
+     path: "/singup",
+     text: "Sign Up"
     },
    ],
    websites:[
@@ -151,18 +199,19 @@ export default {
     }
    ]
   };
-	},
-	methods:{
-		sendToMe(path){
-			/*This If statement allows me to stop the "Duplicated Error showed when the"
-          same button was pressed*/      
-			if (this.$route.path !== path) this.$router.push(path)
-		}
-	},
+ },
+ methods: {
+  sendToMe(path) {
+   /*This If statement allows me to stop the "Duplicated Error showed when the"
+          same button was pressed*/
+
+   if (this.$route.path !== path) this.$router.push(path);
+  },
+ },
  watch: {
   group() {
    this.drawer = false;
-  },
- },
+  }
+ }
 };
 </script>

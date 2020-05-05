@@ -1,6 +1,6 @@
 <template>
 		<div id="class36">
-			<v-container
+			<!-- <v-container
 				class="alignment">
 				<v-card
 					class="mx-auto alignment"
@@ -18,18 +18,19 @@
 						</v-row>
 					</v-card>
 				</v-card>
-			</v-container>
+			</v-container> -->
+			<router-view></router-view>
 		</div>
 </template>
 
 <script>
-import Class36 from "../classes/class36"
+// import Class36 from "../classes/class36"
 
 export default {
   name: "Classes",
 
   components:{
-				Class36,
+				// Class36,
 		},
 }
 </script>

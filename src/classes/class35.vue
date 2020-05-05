@@ -1,6 +1,8 @@
 <template>
  <div>
-  <v-container>
+  <v-card
+   class="mx-auto alignment"
+   max-width="1300">
    <v-row
     align="center"
     justify="center">
@@ -13,7 +15,12 @@
      </v-card>
     </v-col>
    </v-row>
-  </v-container>
   <router-view/>
+  </v-card>
  </div>
 </template>
+<style scoped>
+	.alignment{
+		padding: 2rem 2rem 2rem 2rem;
+	}
+</style>
