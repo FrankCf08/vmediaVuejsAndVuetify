@@ -3,7 +3,7 @@
 			<v-card
 				class="mx-auto alignment"
 				color="blue lighten-4">
-				<h2> Class Component <span class="blue--text">{{$route.params.id}}</span></h2> 
+				<h2> Class Component <span class="blue--text"> "{{this.getClass}}"</span></h2> 
 				<v-card
 					class="mx-auto alignment">
 					<v-row>
@@ -20,6 +20,12 @@
 <script>
 export default {
   name: "Classes",
+  computed:{
+   getClass(){
+    const classValue = this.$route.path.split('/')[3]
+    return classValue[0].toUpperCase() + classValue.slice(1,5) + ' ' + classValue.slice(5)
+   }
+  }
 }
 </script>
 <style scoped>

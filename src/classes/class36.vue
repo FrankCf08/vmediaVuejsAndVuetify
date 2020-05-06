@@ -9,7 +9,7 @@
       <v-list-item>
        <v-list-item-content>
         <v-list-item-subtitle>
-         <router-link :to="`/classes/class36/team/${id}`"> Home </router-link>
+         <router-link :to="`/classes/${$route.params.classID}/class36/team/${id}`"> Home </router-link>
         </v-list-item-subtitle>
        </v-list-item-content>
       </v-list-item>
@@ -27,20 +27,20 @@ export default {
   return{
    tab: null,
    id:'frank',
-   routes: [
-    {
-     routerLink: '/classes/team',
-     text:'Home',
-    },
-    {
-     routerLink: '/classes/team/profile',
-     text:'Profile',
-    },
-    {
-     routerLink: '/classes/team/bio',
-     text:'Bio',
-    },
-   ],
+   // routes: [
+   //  {
+   //   routerLink: '/classes/team',
+   //   text:'Home',
+   //  },
+   //  {
+   //   routerLink: '/classes/team/profile',
+   //   text:'Profile',
+   //  },
+   //  {
+   //   routerLink: '/classes/team/bio',
+   //   text:'Bio',
+   //  },
+   // ],
   }
  }
 }

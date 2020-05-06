@@ -7,7 +7,6 @@
     align="center"
     justify="center">
     <v-col>
-    <h2> Class 35</h2>
      <v-card
       color="blue darken-1"
       class="mx-auto"

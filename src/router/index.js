@@ -33,51 +33,46 @@ const router = new VueRouter({
       component: () => import("../components/SingUp.vue"),
 				},
 				{
-						path: "/classes",
-						name: "Classes",
-						component: () => import("../components/Classes.vue"),
-						children:[
-							// {
-							// 	path:'',
-							// 	name:'HomeClass',
-							// 	component: () => import("../components/HomeClass.vue")
-							// },
-							{
-								path:'class35',
-								component: () => import("../classes/class35.vue"),
-								children:[
-									{
-										path:'',
-										component: () => import("../classes/class35/User.vue")
-									},
-								]
-							},
-							{
-								path: 'class36',
-								name: 'Class36',
-								component: () => import("../classes/class36.vue"),
-								children:[
-									{
-										path: "team/:id",
-										component: () => import("../classes/class36/Team.vue"),
-										children: [
-											{
-												path: "",
-												component: () => import("../classes/class36/Home.vue"),
-											},
-											{
-													path: "profile",
-													component: () => import("../classes/class36/Profile.vue"),
-											},
-											{
-													path: "bio",
-													component: () => import("../classes/class36/Bio.vue"),
-											},
-										]
-									}
-								]
-							},
-						]
+     path: "/classes/:classID",
+     name: "Classes",
+     component: () => import("../components/Classes.vue"),
+     children:[
+      {
+       path:'class35',
+       component: () => import("../classes/class35.vue"),
+       children:[
+        {
+         path:'',
+         component: () => import("../classes/class35/User.vue")
+        },
+       ]
+      },
+      {
+       path: 'class36',
+       name: 'Class36',
+       component: () => import("../classes/class36.vue"),
+       children:[
+        {
+         path: "team/:id",
+         component: () => import("../classes/class36/Team.vue"),
+         children: [
+          {
+           path: "",
+           component: () => import("../classes/class36/Home.vue"),
+          },
+          {
+            path: "profile",
+            component: () => import("../classes/class36/Profile.vue"),
+          },
+          {
+            path: "bio",
+            component: () => import("../classes/class36/Bio.vue"),
+          },
+         ]
+        }
+       ]
+      },
+     ]
 				},
     {
       path: "/user/:id",
