@@ -25,7 +25,7 @@
 								dense
 								v-for="(child, i) in item.children"
 								:key="i"
-								@click="sendToMe(child.path)"
+								@click="routeWithPathName(child)"
 								link
 							>
 								<v-list-item-action v-if="child.icon">
@@ -37,7 +37,10 @@
 							</v-list-item>
 						</v-list-group>
 						<!-- Simple button -->
-						<v-list-item v-else :key="i" @click="sendToMe(item.path)">
+						<v-list-item 
+       v-else 
+       :key="i" 
+       @click="routeWithPathName(item)">
 							<v-list-item-action>
 								<v-icon>{{ item.icon }}</v-icon>
 							</v-list-item-action>
@@ -103,9 +106,16 @@
 			<v-toolbar-items class="hidden-xs-only">
 				<template v-for="(item, i) in items">
 					<!-- Drop down menu -->
-					<v-menu v-if="item.children" :key="i" open-on-hover offset-y>
+					<v-menu 
+      v-if="item.children" 
+      :key="i" 
+      open-on-hover 
+      offset-y>
 						<template v-slot:activator="{ on }">
-							<v-btn text dark v-on="on">
+							<v-btn 
+        text
+        dark 
+        v-on="on">
 								<v-icon> {{ item["icon-alt"] }} </v-icon>
 								{{ item.text }}</v-btn
 							>
@@ -114,14 +124,17 @@
 							<v-list-item
 								v-for="(child, index) in item.children"
 								:key="index"
-								@click="sendToMe(child.path)"
+								@click="routeWithPathName(child)"
 							>
 								<v-list-item-title>{{ child.text }}</v-list-item-title>
 							</v-list-item>
 						</v-list>
 					</v-menu>
 					<!-- Simple button link -->
-					<v-btn v-else :key="i" text @click="sendToMe(item.path)">
+					<v-btn v-else 
+      :key="i" 
+      text 
+      @click="routeWithPathName(item)">
 						<v-icon left>{{ item.icon }}</v-icon>
 						{{ item.text }}
 					</v-btn>
@@ -146,17 +159,18 @@
 		name: "mainNav",
 		data() {
 			return {
-				drawer: false,
+    drawer: false,
+    classID: 'VueRouter',
 				items: [
 					{
 						icon: "mdi-home",
-						path: "/store",
-						text: "Store",
+      text: "Store",
+      name: "Store"
 					},
 					{
 						icon: "mdi-account-search-outline",
-						path: "/searchPeople",
-						text: "Search People",
+      text: "Search People",
+      name: "SearchPeople"
 					},
 					{
 						icon: "mdi-chevron-up",
@@ -165,24 +179,28 @@
 						model: false,
 						children: [
 							{
-								text: "Class 35",
-								path: "/classes/VueRouter/class35",
+        text: "Class 35",
+        name: "Class35",
 							},
 							{
-								text: "Class 36",
-								path: "/classes/VueRouter/class36",
+        text: "Class 36",
+        name: "Class36",
+       },
+       {
+        text: "Class 37",
+        name: "Class37",
 							},
 						],
 					},
 					{
 						icon: "mdi-lock-open-outline",
-						path: "/signin",
-						text: "Sign In",
+      text: "Sign In",
+      name: "SignIn"
 					},
 					{
 						icon: "mdi-lock-outline",
-						path: "/singup",
-						text: "Sign Up",
+      text: "Sign Up",
+      name: "SignUp"
 					},
 				],
 				websites: [
@@ -198,19 +216,18 @@
 					},
 				],
 			};
-		},
+  },
 		methods: {
-			sendToMe(path) {
-				/*This If statement allows me to stop the "Duplicated Error showed when the"
-          same button was pressed*/
-
-				if (this.$route.path !== path) this.$router.push(path);
-			},
-		},
-		watch: {
-			group() {
-				this.drawer = false;
-			},
+   routeWithPathName(item){ 
+    /*This If statement allows me to stop the "Duplicated Error showed when the"
+     same button was pressed*/ 
+    if (this.$route.name !== item.name) {
+     this.$router.push({
+      name: item.name,
+      params:{classID: this.classID}
+     });
+    }
+   }
 		},
 	};
 </script>

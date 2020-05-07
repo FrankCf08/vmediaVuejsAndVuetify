@@ -43,6 +43,7 @@ const router = new VueRouter({
        children:[
         {
          path:'',
+         name:'Class35',
          component: () => import("../classes/class35/User.vue")
         },
        ]
@@ -61,12 +62,40 @@ const router = new VueRouter({
            component: () => import("../classes/class36/Home.vue"),
           },
           {
-            path: "profile",
-            component: () => import("../classes/class36/Profile.vue"),
+           path: "profile",
+           component: () => import("../classes/class36/Profile.vue"),
           },
           {
-            path: "bio",
-            component: () => import("../classes/class36/Bio.vue"),
+           path: "bio",
+           component: () => import("../classes/class36/Bio.vue"),
+          },
+         ]
+        }
+       ]
+      },
+      {
+       path: 'class37',
+       name: 'Class37',
+       component: () => import("../classes/class37.vue"),
+       children:[
+        {
+         path: "team/:id",
+         component: () => import("../classes/class37/Team.vue"),
+         children: [
+          {
+           path: "",
+           name: 'HomeClass37',
+           component: () => import("../classes/class37/Home.vue"),
+          },
+          {
+           path: "profile",
+           name: 'Profile',
+           component: () => import("../classes/class37/Profile.vue"),
+          },
+          {
+           path: "bio",
+           name: 'Bio',
+           component: () => import("../classes/class37/Bio.vue"),
           },
          ]
         }

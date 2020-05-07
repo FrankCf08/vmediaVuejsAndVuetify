@@ -4,12 +4,16 @@
    <v-col>
     <v-card
      class="mx-auto alignment">
-     <h2>Class {{$route.path.split('/')[3]}} Component:</h2>
+    <h2>Class {{$route.path.split('/')[3]}} Component:</h2>
      <v-list>
       <v-list-item>
        <v-list-item-content>
         <v-list-item-subtitle>
-         <router-link :to="`/classes/${$route.params.classID}/class36/team/${id}`"> Home </router-link>
+         <router-link 
+          :to="{name: 'HomeClass37', params:{classID: `${$route.params.classID}`, id: this.id}}"
+          >
+          Home 
+         </router-link>
         </v-list-item-subtitle>
        </v-list-item-content>
       </v-list-item>
@@ -26,23 +30,10 @@ export default {
  data(){
   return{
    tab: null,
-   id:'frank',
-   // routes: [
-   //  {
-   //   routerLink: '/classes/team',
-   //   text:'Home',
-   //  },
-   //  {
-   //   routerLink: '/classes/team/profile',
-   //   text:'Profile',
-   //  },
-   //  {
-   //   routerLink: '/classes/team/bio',
-   //   text:'Bio',
-   //  },
-   // ],
+   id:'frankcruz',
   }
- }
+ },
+
 }
 </script>
 <style scoped>
