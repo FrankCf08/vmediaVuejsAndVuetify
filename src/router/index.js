@@ -101,6 +101,28 @@ const router = new VueRouter({
         }
        ]
       },
+      {
+       path: 'class38',
+       name: 'Class38',
+       component: () => import("../classes/class38.vue"),
+       children:[
+        {
+         path: "team/:id",
+         component: () => import("../classes/class38/Team.vue"),
+         children:[
+          {
+           path:'',
+           name: 'HomeClass38',
+           components: {
+            default: () => import("../classes/class38/Home.vue"),
+            profile38: () => import("../classes/class38/Profile.vue"),
+            bio38: () => import("../classes/class38/Bio.vue"),
+           },
+          }
+         ],
+        },
+       ]
+      },
      ]
 				},
     {

@@ -189,7 +189,11 @@
        {
         text: "Class 37",
         name: "Class37",
-							},
+       },
+       {
+        text: "Class 38",
+        name: "Class38"
+       },
 						],
 					},
 					{

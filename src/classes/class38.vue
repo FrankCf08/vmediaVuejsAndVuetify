@@ -1,0 +1,35 @@
+<template>
+ <div>
+  <v-row>
+   <v-col>
+    <v-card
+     class="mx-auto alignment">
+    <h2>Class {{$route.path.split('/')[3]}} Component:</h2>
+    <router-link 
+     :to="{name: 'HomeClass38', params:{classID: `${$route.params.classID}`, id: this.id}}"
+     >
+     Home 
+    </router-link>
+    </v-card>
+   </v-col>
+  </v-row>
+  <router-view/>
+ </div>
+</template>
+<script>
+export default {
+
+ data(){
+  return{
+   tab: null,
+   id:'frankfelix',
+  }
+ },
+
+}
+</script>
+<style scoped>
+	.alignment{
+		padding: 2rem 2rem 2rem 2rem;
+	}
+</style>
