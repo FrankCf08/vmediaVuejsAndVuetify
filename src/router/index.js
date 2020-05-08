@@ -123,6 +123,31 @@ const router = new VueRouter({
         },
        ]
       },
+      {
+       path: 'class39',
+       alias: 'aliasRedirection' , //Redirecting by using alias (it doesn;t change my path) classes/VueRouter/aliasRedirection
+       name: 'Class39',
+       component: () => import("../classes/class39.vue"),
+       children:[
+        {
+         path: "team/:id",
+         component: () => import("../classes/class39/Team.vue"),
+         children:[
+          {
+           path:'',
+           // redirect: '/', //Redirecting using 'path'
+           redirect: {name:'Store'}, //Tedirecting using 'name component'
+           name: 'HomeClass39',
+           components: {
+            default: () => import("../classes/class39/Home.vue"),
+            profile38: () => import("../classes/class39/Profile.vue"),
+            bio38: () => import("../classes/class39/Bio.vue"),
+           },
+          }
+         ],
+        },
+       ]
+      },
      ]
 				},
     {
