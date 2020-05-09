@@ -78,9 +78,8 @@
 		<v-app-bar
 			app
 			clipped-left
-			color="blue darken-1"
+			color="blue darken-4"
 			dark
-			src="@/assets/technology.jpeg"
 		>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-toolbar-title>
@@ -198,6 +197,10 @@
         text: "Class 39",
         name: "Class39"
        },
+       {
+        text: "Class 40",
+        name: "Class40"
+       },
 						],
 					},
 					{
@@ -209,7 +212,12 @@
 						icon: "mdi-lock-outline",
       text: "Sign Up",
       name: "SignUp"
-					},
+     },
+     {
+      icon: "mdi-account-box-outline",
+      text: "Contact",
+      name: "Contact"
+     },
 				],
 				websites: [
 					{

@@ -148,8 +148,33 @@ const router = new VueRouter({
         },
        ]
       },
+      {
+       path: 'class40',
+       name: 'Class40',
+       component: () => import("../classes/class40.vue"),
+       children: [
+        {
+         path: "team/:id",
+         component: () => import("../classes/class40/Team.vue"),
+         children:[
+          {
+           path:'',
+           name: 'Contact40',
+           components:{
+            default: () => import("../components/Contact.vue")
+           }
+          }
+         ]
+        }
+       ]
+      },
      ]
-				},
+    },
+    {
+     path: '/contact',
+     name: 'Contact',
+     component: () => import("../components/Contact.vue"),
+    },
     {
       path: "/user/:id",
       name: "User",

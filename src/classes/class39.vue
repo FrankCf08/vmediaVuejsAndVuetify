@@ -10,7 +10,7 @@
      >
      Home 
     </router-link>
-    <p class="red--text">Clicking on Home - it will redirected us to '/', omitting the default Home route</p>
+    <p class="red--text">Clicking on Home - it will redirect you to '/Store', omitting the default Home route</p>
     </v-card>
    </v-col>
   </v-row>
