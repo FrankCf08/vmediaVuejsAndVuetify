@@ -1,5 +1,6 @@
 <template>
  <div>
+  <Contact/>
   <v-container fluid>
    <v-row align="center" justify="center">
     <v-col class="text-center mt-12">
@@ -27,7 +28,7 @@
       <v-row>
        <v-col
         cols="12"
-        sm="3">
+        sm="4">
         <v-btn
         width="180"
         color="error"
@@ -37,7 +38,7 @@
        </v-col>
        <v-col
         cols="12"
-        sm="3">
+        sm="4">
         <v-btn
         width="180"
         color="success"
@@ -47,23 +48,12 @@
        </v-col>
        <v-col
         cols="12"
-        sm="3">
+        sm="4">
         <v-btn
          width="180"
          color="primary"
-         @click="sendMeTo(items.signinPath)">
-         Sign In
-        </v-btn>
-       </v-col>
-       <v-col
-        cols="12"
-        sm="3">
-        <v-btn
-         width="180"
-         color="yellow"
-         class="white--text"
-         @click="sendMeTo(items.singupPath)">
-         Sign Up
+         @click="sendMeTo(items.contactPath)">
+         Contact
         </v-btn>
        </v-col>
       </v-row>
@@ -74,14 +64,19 @@
  </div>
 </template>
 <script>
+import Contact from "../components/Contact"
+
 export default {
+ components:{
+  Contact
+ },
+
  data(){
   return{
    items:{
     homePath:'/store',
     searchPeople:'/searchPeople',
-    signinPath:'/signin',
-    singupPath:'/singup',
+    contactPath: '/contact',
    }
   }
  },

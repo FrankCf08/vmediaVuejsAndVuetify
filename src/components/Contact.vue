@@ -1,7 +1,8 @@
 <template>
  <div>
-  <v-card
-   height="850">
+  <v-container 
+   fluid 
+   class="pa-0">
    <v-img
     height="300"
     position="50% 45%"
@@ -25,7 +26,7 @@
      </v-col>
     </v-row>
     <v-row>
-     <v-col class="profile-details text-center">
+     <v-col class="text-center">
       <v-list-item class="">
        <v-list-item-content>
         <v-list-item-title class="display-1">Frank Cruz</v-list-item-title>
@@ -46,39 +47,52 @@
      <v-col
       class="text-center"
       cols="12">
-      <v-btn icon color="blue darken-4" href="https://www.instagram.com/frankcf08/?hl=en" target="_blank">
+      <v-btn icon color="blue darken-4" 
+       href="https://www.instagram.com/frankcf08/?hl=en" 
+       target="_blank" 
+       class="button-icon">
        <v-icon x-large>mdi-facebook</v-icon>
       </v-btn>
-      <v-btn icon large color="pink" href="https://www.instagram.com/frankcf08/?hl=en" target="_blank">
+      <v-btn icon large color="pink" 
+       href="https://www.instagram.com/frankcf08/?hl=en" 
+       target="_blank"
+       class="button-icon">
        <v-icon x-large>mdi-instagram</v-icon>
       </v-btn>
-      <v-btn icon large color="red">
+      <v-btn icon large color="red"
+       class="button-icon">
        <v-icon x-large>mdi-youtube</v-icon>
       </v-btn>
-      <v-btn icon large color="cyan">
+      <v-btn icon large color="cyan"
+       class="button-icon">
        <v-icon x-large>mdi-twitter</v-icon>
       </v-btn>
-      <v-btn icon large color="black" href="https://github.com/FrankCf08?tab=repositories" target="_blank">
+      <v-btn icon large color="black" 
+       href="https://github.com/FrankCf08?tab=repositories" 
+       target="_blank"
+       class="button-icon">
        <v-icon x-large>mdi-github</v-icon>
       </v-btn>
-      <v-btn icon large color="blue" href="https://www.linkedin.com/in/frankcruz08/" target="_blank">
+      <v-btn icon large color="blue" 
+       href="https://www.linkedin.com/in/frankcruz08/" 
+       target="_blank"
+       class="button-icon">
        <v-icon x-large>mdi-linkedin</v-icon>
       </v-btn>
      </v-col>
     </v-row>
    </v-container>
-  </v-card>
+  </v-container>
  </div>
 </template>
 
 <style scoped>
 .profile-photo{
-  border-radius: 50%;
-  margin: -6rem;
+  margin: -6rem 0 0 0;
   padding: 5px;
 }
-.profile-details{
-  margin: 5rem 2rem 2rem 2rem;
+.button-icon{
+ margin: 0 0.35rem 0 0.35rem;
 }
 
 </style>
