@@ -54,6 +54,20 @@
        </v-textarea>
       </v-col>
      </v-row>
+     <v-row
+      align="end"
+      justify="end">
+      <v-col
+       cols="3">
+       <v-btn
+       :disabled="!valid"
+       color="primary"
+       class="ma-0 pa-0"
+       @click="sendContent"
+       >Send
+       </v-btn>
+      </v-col>
+     </v-row>
     </v-container>
    </v-form>
   </v-container>
@@ -76,5 +90,11 @@ export default {
    ],
   }
  },
+ methods:{
+  sendContent(){
+     this.$refs.contactForm.validate()
+     this.$refs.contactForm.reset()
+   },
+ }
 }
 </script>
