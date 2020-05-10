@@ -7,7 +7,7 @@
    <h2>Class {{$route.path.split('/')[3]}} Component:</h2>
    <router-link
     class="white--text" 
-    :to="{name: 'Contact40', params:{classID: `${$route.params.classID}`, id: this.id}}"
+    :to="{name: 'Contact40', params:{classID: `${$route.params.classID}`, isACustomer: this.isACustomer}}"
     >
     Contact 
    </router-link>
@@ -19,7 +19,7 @@
 export default {
  data(){
   return{
-   id: 'Props'
+   isACustomer: 'true'
   }
  }
 }

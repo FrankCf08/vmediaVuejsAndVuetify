@@ -154,8 +154,8 @@ const router = new VueRouter({
        component: () => import("../classes/class40.vue"),
        children: [
         {
-         path: "team/:id",
-         component: () => import("../classes/class40/Team.vue"),
+         path: "contactView/:isACustomer",
+         component: () => import("../classes/class40/ContactView.vue"),
          children:[
           {
            path:'',
@@ -169,10 +169,13 @@ const router = new VueRouter({
        ]
       },
      ]
-    },
+    },    
     {
      path: '/contact',
      name: 'Contact',
+     props:{
+      isACustomer:true,
+     },
      component: () => import("../components/Contact.vue"),
     },
     {

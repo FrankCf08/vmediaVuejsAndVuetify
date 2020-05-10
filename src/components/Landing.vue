@@ -1,6 +1,6 @@
 <template>
  <div>
-  <Contact/>
+  <ContactProfile/>
   <v-container fluid>
    <v-row align="center" justify="center">
     <v-col class="text-center mt-12">
@@ -64,11 +64,11 @@
  </div>
 </template>
 <script>
-import Contact from "../components/Contact"
+import ContactProfile from "../classes/class40/ContactProfile"
 
 export default {
  components:{
-  Contact
+  ContactProfile
  },
 
  data(){
