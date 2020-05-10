@@ -184,7 +184,8 @@ const router = new VueRouter({
       component: () => import("../classes/class34/User.vue"),
     },
     {
-      path: "*",
+      //**My default fallback when a page it is not found */
+      path: "*", 
       name: "NotFound",
       component: () => import("../components/NotFound.vue"),
     },
