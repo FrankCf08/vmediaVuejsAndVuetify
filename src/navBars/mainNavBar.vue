@@ -201,6 +201,10 @@
         text: "Class 40",
         name: "Class40"
        },
+       {
+        text: "Class 42",
+        name: "Class42"
+       },
 						],
 					},
 					{
@@ -241,7 +245,8 @@
      this.$router.push({
       name: item.name,
       params:{classID: this.classID}
-     });
+     })
+     .catch(error => console.log(`Allow Views value => ${error}`)); //catches Unexpected promise false
     }
    }
 		},

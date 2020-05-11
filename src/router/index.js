@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import store from "../store"
 
 Vue.use(VueRouter);
 
@@ -168,6 +169,29 @@ const router = new VueRouter({
         }
        ]
       },
+      {
+       path:'class42',
+       name: 'Class42',
+       component: ()=> import("../classes/class42.vue"),
+       children:[
+        {
+         path: 'contacProfile',
+         name: 'ContactProfile42',
+         component: ()=> import("../classes/class42/ContactProfile.vue")
+        },
+        {
+         path: 'contactForm',
+         component: ()=> import("../classes/class42/ContactForm.vue"),
+         children:[
+          {
+           path: '',
+           name: 'ContactFormAndNewsletter42',
+           component: ()=> import("../classes/class42/ContactNewsletter.vue"),
+          }
+         ]
+        }
+       ],
+      },
      ]
     },    
     {
@@ -191,5 +215,9 @@ const router = new VueRouter({
     },
   ],
 });
+
+router.beforeEach((to, from, next)=> {
+  next(store.state.auth) 
+})
 
 export default router;

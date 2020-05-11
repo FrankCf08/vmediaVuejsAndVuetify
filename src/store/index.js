@@ -7,7 +7,7 @@ import randomPeople from "./modules/randomPeople"
 
 Vue.use(Vuex)
 
-export const store = new Vuex.Store({
+export default new Vuex.Store({
  state:{
   ...shopItemsState,
   person:{
@@ -26,6 +26,7 @@ export const store = new Vuex.Store({
   ],
   /*shopItems was sent to shopItems.js */ 
   basket:[],
+  auth: true,
  },
  getters:{
   completedDuties: (state) => {
@@ -37,6 +38,7 @@ export const store = new Vuex.Store({
  mutations:{
   ...shopItemsMutations,
   ...basketMutations,
+  setAuthorizationView: (state) => state.auth = !state.auth
  },
  actions:{
  },
