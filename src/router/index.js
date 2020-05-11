@@ -218,6 +218,29 @@ const router = new VueRouter({
          ]
         }
        ],
+      },
+      {
+       path: 'class44',
+       name: 'Class44',
+       component: () => import ("../classes/class44.vue"),
+       children:[
+        {
+         path: 'contacProfile',
+         name: 'ContactProfile44',
+         component: ()=> import("../classes/class44/ContactProfile.vue")
+        },
+        {
+         path: 'contactForm',
+         component: ()=> import("../classes/class44/ContactForm.vue"),
+         children:[
+          {
+           path: '',
+           name: 'ContactFormAndNewsletter44',
+           component: ()=> import("../classes/class44/ContactNewsletter.vue"),
+          }
+         ]
+        }
+       ]
       }
      ]
     },    
@@ -241,6 +264,13 @@ const router = new VueRouter({
       component: () => import("../components/NotFound.vue"),
     },
   ],
+  scrollBehavior (to, from, savedPosition) {  
+    if (savedPosition) {
+      return savedPosition
+    } else {     
+      return { x: 0, y: 0 }
+    }
+  }
 });
 
 /*Global Guards */
