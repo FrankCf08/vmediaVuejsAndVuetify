@@ -192,6 +192,33 @@ const router = new VueRouter({
         }
        ],
       },
+      {
+       path: 'class43',
+       name: 'Class43',
+       component: () => import("../classes/class43.vue"),
+       children:[
+        {
+         path: 'contacProfile',
+         name: 'ContactProfile43',
+         component: ()=> import("../classes/class43/ContactProfile.vue")
+        },
+        {
+         // Allow us to route guard befire entering to this route 'ContactForm'
+         beforeEnter: ((to,from, next) => {
+          next(store.state.authFormclass43)
+         }),
+         path: 'contactForm',
+         component: ()=> import("../classes/class43/ContactForm.vue"),
+         children:[
+          {
+           path: '',
+           name: 'ContactFormAndNewsletter43',
+           component: ()=> import("../classes/class43/ContactNewsletter.vue"),
+          }
+         ]
+        }
+       ],
+      }
      ]
     },    
     {
@@ -216,6 +243,7 @@ const router = new VueRouter({
   ],
 });
 
+/*Global Guards */
 router.beforeEach((to, from, next)=> {
   next(store.state.auth) 
 })

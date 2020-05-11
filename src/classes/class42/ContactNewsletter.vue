@@ -9,8 +9,9 @@
      align="center"
      justify="center">
      <v-col
-      cols="12"
-      sm="4">
+      cols="8"
+      sm="4"
+      lg="5">
       <h2>Newsletter</h2>
       <v-text-field
        v-model="newsletter"
@@ -20,16 +21,20 @@
       </v-text-field>
      </v-col>
      <v-col
-     class="text-end"
-      cols="8"
-      sm="1">
-      <v-btn
-       :disabled="!valid"
-       color="primary"
-       class="ma-0 pa-0"
-       @click="sendContent"
-       >Send
-      </v-btn>
+      cols="3"
+      lg="1">
+      <v-row>
+       <v-col
+        class="text-end">
+        <v-btn
+         :disabled="!valid"
+         color="primary"
+         class="ma-0 pa-0"
+         @click="sendContent"
+         >Send
+        </v-btn>
+       </v-col>
+      </v-row>
      </v-col>
     </v-row>
    </v-form>
