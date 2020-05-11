@@ -11,7 +11,6 @@ const router = new VueRouter({
       path: "/",
       name: "Landing",
       component: () => import("../components/Landing.vue"),
-      meta: { requiresAuth: true },
     },
     {
       path: "/store",
@@ -241,7 +240,31 @@ const router = new VueRouter({
          ]
         }
        ]
-      }
+      },
+      {
+       path:'class45',
+       name: 'Class45',
+       component: ()=> import("../classes/class45.vue"),
+       children:[
+        {
+         path: 'contacProfile',
+         name: 'ContactProfile45',
+         meta: { requiresAuth: true },
+         component: ()=> import("../classes/class45/ContactProfile.vue")
+        },
+        {
+         path: 'contactForm',
+         component: ()=> import("../classes/class45/ContactForm.vue"),
+         children:[
+          {
+           path: '',
+           name: 'ContactFormAndNewsletter45',
+           component: ()=> import("../classes/class45/ContactNewsletter.vue"),
+          }
+         ]
+        }
+       ]
+      },
      ]
     },    
     {
@@ -275,7 +298,12 @@ const router = new VueRouter({
 
 /*Global Guards */
 router.beforeEach((to, from, next)=> {
-  next(store.state.auth) 
+  if(to.matched.some(route => route.meta.requiresAuth)){
+   next(store.state.authProfileclass45)
+  }
+  else{
+   next(store.state.auth) 
+  }
 })
 
 export default router;

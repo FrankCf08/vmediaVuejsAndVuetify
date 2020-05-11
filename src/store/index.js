@@ -28,6 +28,7 @@ export default new Vuex.Store({
   basket:[],
   auth: true,
   authFormclass43: true,
+  authProfileclass45: true,
  },
  getters:{
   completedDuties: (state) => {
@@ -41,6 +42,7 @@ export default new Vuex.Store({
   ...basketMutations,
   setAuthorizationView: (state) => state.auth = !state.auth,
   setAuthorizationViewFormClass43: (state) => state.authFormclass43 = !state.authFormclass43,
+  setAuthorizationViewProfileClass45: (state) => state.authProfileclass45 = !state.authProfileclass45,
  },
  actions:{
  },

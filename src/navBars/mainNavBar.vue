@@ -213,6 +213,10 @@
         text: "Class 44",
         name: "Class44"
        },
+       {
+        text: "Class 45",
+        name: "Class45"
+       }
 						],
 					},
 					{
