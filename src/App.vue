@@ -3,7 +3,9 @@
     <v-app>
       <MainNav />
       <v-content>
+       <transition name="fade" mode="out-in">
         <router-view />
+       </transition>
       </v-content>
     </v-app>
   </v-card>
@@ -24,7 +26,7 @@ export default {
   data(){
     return{
       people:[],
-      peopleURL: 'https://randomuser.me/api/?results=50'
+      peopleURL: 'https://randomuser.me/api/?results=100'
     }
   },
   mounted(){
@@ -46,3 +48,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+  .fade-enter-active, .fade-leave-active {
+   transition: opacity 0.35s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+</style>

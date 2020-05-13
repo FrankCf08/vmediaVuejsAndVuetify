@@ -8,8 +8,10 @@
 					class="mx-auto alignment">
 					<v-row>
 						<v-col>
-						<h3>Router view on <span class="blue--text">Class component</span>, display below:</h3>
-						<router-view/>
+       <h3>Router view on <span class="blue--text">Class component</span>, display below:</h3>
+       <transition name="fade" mode="out-in">
+        <router-view />
+       </transition>
 						</v-col>
 					</v-row>
 				</v-card>
@@ -32,4 +34,10 @@ export default {
 	.alignment{
 		padding: 2rem 1rem 2rem 1rem;
 	}
+ .fade-enter-active, .fade-leave-active {
+  transition: opacity 0.35s;
+ }
+ .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+   opacity: 0;
+ }
 </style>
