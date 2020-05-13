@@ -63,8 +63,13 @@
       <v-list
        class="white--text"
        color="error">
-       <v-list-item-title>
+       <v-list-item-title
+        v-if="$vuetify.breakpoint.smAndUp">
         This text is shown because you can't access Profile link
+       </v-list-item-title>
+        <v-list-item-title
+        v-else>
+        This text is shown because <br> you can't access Profile link
        </v-list-item-title>
       </v-list>
      </v-card>
