@@ -265,6 +265,18 @@ const router = new VueRouter({
         }
        ]
       },
+      {
+       path: 'class47',
+       name: 'Class47',
+       component: ()=> import("../classes/class47.vue"),
+       children:[
+        {
+         path:':user/:initials',
+         name: 'User47',
+         component: () => import("../classes/class47/User.vue"),
+        }
+       ]
+      },
      ]
     },    
     {
