@@ -277,6 +277,18 @@ const router = new VueRouter({
         }
        ]
       },
+      {
+       path: 'class48',
+       name: 'Class48',
+       component: ()=> import("../classes/class48.vue"),
+       children:[
+        {
+         path:'user/:initials',
+         name: 'User48',
+         component: ()=> import("../classes/class48/User.vue")
+        }
+       ]
+      },
      ]
     },    
     {
