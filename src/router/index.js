@@ -289,6 +289,29 @@ const router = new VueRouter({
         }
        ]
       },
+      {
+       path: 'class49',
+       name: 'Class49',
+       component: () => import("../classes/class49.vue"),
+       children:[
+        {
+         path: 'contacProfile',
+         name: 'ContactProfile49',
+         component: ()=> import("../classes/class49/ContactProfile.vue")
+        },
+        {
+         path: 'contactForm',
+         component: ()=> import("../classes/class49/ContactForm.vue"),
+         children:[
+          {
+           path: '',
+           name: 'ContactFormAndNewsletter49',
+           component: ()=> import("../classes/class49/ContactNewsletter.vue"),
+          }
+         ]
+        }
+       ]
+      },
      ]
     },    
     {
@@ -312,8 +335,12 @@ const router = new VueRouter({
     },
   ],
   scrollBehavior (to, from, savedPosition) {  
-    if (savedPosition) {
-      return savedPosition
+    if(savedPosition){
+     return savedPosition
+    }else if (to.hash) {
+      return {
+       selector: to.hash
+      }
     } else {     
       return { x: 0, y: 0 }
     }
