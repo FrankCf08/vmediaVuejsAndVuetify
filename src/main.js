@@ -9,7 +9,7 @@ Vue.config.productionTip = false;
 Vue.directive('outstand', {
  /**
   * 
-  * el : DOM
+  * el : Element of the DOM
   * binding : It is the value passed
   * vnode Virtual Node
   */
@@ -17,6 +17,33 @@ Vue.directive('outstand', {
   el.style.color= 'red'
   el.style.fontSize = binding.value + 'px'
   vnode
+ }
+})
+
+Vue.directive('bringForward',{
+ bind(el,binding){
+  
+  el.style.position = 'fixed'
+  el.style.fontSize = `50px`
+
+  if(binding.expression){
+   el.style.top = `${binding.expression}px`
+  }
+
+  if(binding.arg){
+   let color  = 'goldenrod'
+   let text = 'blue'
+
+   const modifiers = Object.keys(binding.modifiers)
+   
+   if(modifiers.length > 1){
+    color = modifiers[0]
+    text = modifiers[1]
+   }
+
+   el.style.backgroundColor = color
+   el.style.color = text
+  }
  }
 })
 

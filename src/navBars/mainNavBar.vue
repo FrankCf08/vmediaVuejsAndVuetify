@@ -270,6 +270,10 @@
           text:'Directives Intro',
           name:'Class50'
          },
+         {
+          text: 'Directives Hooks',
+          name: 'Class51'
+         },
         ]
        }
 						],
