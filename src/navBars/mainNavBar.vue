@@ -1,80 +1,90 @@
 <template>
 	<div>
-		<!-- NavBar -->
+		<!-- NavBar Drawer-->
 		<v-navigation-drawer app v-model="drawer" relative clipped>
 			<v-list nav class="ml-2">
-				<v-list-item-group active-class="blue--text text--accent-4">
-					<v-list-item-title class="grey--text text--darken-1"
-						>Projects</v-list-item-title
-					>
-					<template v-for="(item, i) in items">
-						<!-- Dropdown menu -->
-						<v-list-group
-							v-if="item.children"
-							:key="i"
-							v-model="item.model"
-							:prepend-icon="item.model ? item.icon : item['icon-alt']"
-							append-icon
-						>
-							<template v-slot:activator>
-								<v-list-item-content class="tex--center">
-									<v-list-item-title>{{ item.text }}</v-list-item-title>
-								</v-list-item-content>
-							</template>
-							<v-list-item
-								dense
-								v-for="(child, i) in item.children"
-								:key="i"
-								@click="routeWithPathName(child)"
-								link
-							>
-								<v-list-item-action v-if="child.icon">
-									<v-icon>{{ child.icon }}</v-icon>
-								</v-list-item-action>
-								<v-list-item-content>
-									<v-list-item-title>{{ child.text }}</v-list-item-title>
-								</v-list-item-content>
-							</v-list-item>
-						</v-list-group>
-						<!-- Simple button -->
-						<v-list-item 
-       v-else 
-       :key="i" 
-       @click="routeWithPathName(item)">
-							<v-list-item-action>
-								<v-icon>{{ item.icon }}</v-icon>
-							</v-list-item-action>
-							<v-list-item-content>
-								<v-list-item-title>{{ item.text }}</v-list-item-title>
-							</v-list-item-content>
-						</v-list-item>
-					</template>
+    <v-list-item-title class="grey--text text--darken-1"
+     >Projects</v-list-item-title
+    >
+    <template v-for="(item, i) in items">
+     <!-- Dropdown menu -->
+     <v-list-group
+      v-if="item.classes"
+      :key="i"
+      v-model="item.model"
+      :prepend-icon="item.model ? item.icon : item['icon-alt']"
+      append-icon
+     >
+      <!-- Title of dropw down menu-->
+      <template v-slot:activator>
+       <v-list-item-content class="tex--center">
+        <v-list-item-title>{{ item.text }}</v-list-item-title>
+       </v-list-item-content>
+      </template>
 
-					<v-divider></v-divider>
+      <!-- List of sub-groups -->
+      <v-list-group
+       v-for="(classChild, index) in item.classes"
+       :key="index"
+       value="false"
+       sub-group>
+       <template v-slot:activator>
+        <v-list-item-content>
+         <v-list-item-title>
+          {{classChild.classID}}
+         </v-list-item-title>
+        </v-list-item-content>
+       </template>
 
-					<!-- Website Links -->
-					<v-list-item-title class="grey--text text--darken-1"
-						>Wesbites</v-list-item-title
-					>
-					<template v-for="website in websites">
-						<v-list-item
-							:key="website.text"
-							target="_blank"
-							:href="website.href"
-							link
-						>
-							<v-list-item-action>
-								<v-icon>{{ website.icon }}</v-icon>
-							</v-list-item-action>
-							<v-list-item-content>
-								<v-list-item-title>{{ website.text }}</v-list-item-title>
-							</v-list-item-content>
-						</v-list-item>
-					</template>
-				</v-list-item-group>
+       <!-- Items the sub-groups -->
+       <v-list-item
+        v-for="(child, index) in classChild.children"
+        :key="index"
+        @click="routeWithPathName(child, classChild.classID)"
+        link>
+        <v-list-item-title>{{child.text}}</v-list-item-title>
+       </v-list-item>
+      </v-list-group>
+     </v-list-group>
+     <!-- Simple button -->
+     <v-list-item 
+      v-else 
+      :key="i" 
+      @click="routeWithPathName(item)">
+      <v-list-item-action>
+       <v-icon>{{ item.icon }}</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+       <v-list-item-title>{{ item.text }}</v-list-item-title>
+      </v-list-item-content>
+     </v-list-item>
+    </template>
+
+    <v-divider></v-divider>
+
+    <!-- Website Links -->
+    <v-list-item-title class="grey--text text--darken-1"
+     >Wesbites</v-list-item-title
+    >
+    <template v-for="website in websites">
+     <v-list-item
+      :key="website.text"
+      target="_blank"
+      :href="website.href"
+      link
+     >
+      <v-list-item-action>
+       <v-icon>{{ website.icon }}</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+       <v-list-item-title>{{ website.text }}</v-list-item-title>
+      </v-list-item-content>
+     </v-list-item>
+    </template>
 			</v-list>
 		</v-navigation-drawer>
 
+  <!-- NavBar Top -->
 		<v-app-bar
 			app
 			clipped-left
@@ -106,8 +116,9 @@
 				<template v-for="(item, i) in items">
 					<!-- Drop down menu -->
 					<v-menu 
-      v-if="item.children" 
-      :key="i" 
+      v-if="item.classes" 
+      :key="i"
+      :close-on-content-click="false" 
       open-on-hover 
       offset-y>
 						<template v-slot:activator="{ on }">
@@ -120,13 +131,30 @@
 							>
 						</template>
 						<v-list>
-							<v-list-item
-								v-for="(child, index) in item.children"
-								:key="index"
-								@click="routeWithPathName(child)"
-							>
-								<v-list-item-title>{{ child.text }}</v-list-item-title>
-							</v-list-item>
+       <v-list-group
+        v-for="(classChild, index) in item.classes"
+        :key="index"
+        :prepend-icon="classChild.icon"
+        >
+        <template v-slot:activator>
+         <v-list-item>
+          <v-list-item-title>
+           {{classChild.classID}}
+          </v-list-item-title>
+         </v-list-item>
+        </template>
+        <v-list>
+         <v-list-item
+          v-for="(child, index) in classChild.children"
+          :key="index"
+          :close-on-content-click="true" 
+          @click="routeWithPathName(child,classChild.classID)">
+          <v-list-item-title>
+           {{child.text}}
+          </v-list-item-title>
+         </v-list-item>
+        </v-list>
+       </v-list-group>
 						</v-list>
 					</v-menu>
 					<!-- Simple button link -->
@@ -159,7 +187,6 @@
 		data() {
 			return {
     drawer: false,
-    classID: 'VueRouter',
 				items: [
 					{
 						icon: "mdi-home",
@@ -176,59 +203,65 @@
 						"icon-alt": "mdi-chevron-down",
 						text: "Classes",
 						model: false,
-						children: [
-							{
-        text: "Class 35",
-        name: "Class35",
-							},
-							{
-        text: "Class 36",
-        name: "Class36",
-       },
+						classes: [
        {
-        text: "Class 37",
-        name: "Class37",
+        classID: 'VueRouter',
+        icon: 'mdi-routes',
+        children:[
+         {
+          text: "Class 35",
+          name: "Class35",
+         },
+         {
+          text: "Class 36",
+          name: "Class36",
+         },
+         {
+          text: "Class 37",
+          name: "Class37",
+         },
+         {
+          text: "Class 38",
+          name: "Class38"
+         },
+         {
+          text: "Class 39",
+          name: "Class39"
+         },
+         {
+          text: "Class 40",
+          name: "Class40"
+         },
+         {
+          text: "Class 42",
+          name: "Class42"
+         },
+         {
+          text: "Class 43",
+          name: "Class43"
+         },
+         {
+          text: "Class 44",
+          name: "Class44"
+         },
+         {
+          text: "Class 45",
+          name: "Class45"
+         },
+         {
+          text: "Class 47",
+          name: "Class47"
+         },
+         {
+          text: "Class 48",
+          name: "Class48"
+         },
+         {
+          text: 'Class 49',
+          name: "Class49"
+         }
+        ]
        },
-       {
-        text: "Class 38",
-        name: "Class38"
-       },
-       {
-        text: "Class 39",
-        name: "Class39"
-       },
-       {
-        text: "Class 40",
-        name: "Class40"
-       },
-       {
-        text: "Class 42",
-        name: "Class42"
-       },
-       {
-        text: "Class 43",
-        name: "Class43"
-       },
-       {
-        text: "Class 44",
-        name: "Class44"
-       },
-       {
-        text: "Class 45",
-        name: "Class45"
-       },
-       {
-        text: "Class 47",
-        name: "Class47"
-       },
-       {
-        text: "Class 48",
-        name: "Class48"
-       },
-       {
-        text: 'Class 49',
-        name: "Class49"
-       }
 						],
 					},
 					{
@@ -262,13 +295,14 @@
 			};
   },
 		methods: {
-   routeWithPathName(item){ 
+   routeWithPathName(item, classID){ 
     /*This If statement allows me to stop the "Duplicated Error showed when the"
      same button was pressed*/ 
+
     if (this.$route.name !== item.name) {
      this.$router.push({
       name: item.name,
-      params:{classID: this.classID}
+      params:{classID:classID}
      })
      .catch(error => console.log(`Allow Views value => ${error}`)); //catches Unexpected promise false
     }
