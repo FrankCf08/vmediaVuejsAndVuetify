@@ -26,7 +26,7 @@
       <v-list-group
        v-for="(classChild, index) in item.classes"
        :key="index"
-       value="false"
+       value="true"
        sub-group>
        <template v-slot:activator>
         <v-list-item-content>
@@ -209,55 +209,55 @@
         icon: 'mdi-routes',
         children:[
          {
-          text: "Class 35",
+          text: "Nested Routes",
           name: "Class35",
          },
          {
-          text: "Class 36",
+          text: "Nested Navigation",
           name: "Class36",
          },
          {
-          text: "Class 37",
+          text: "Named Routes",
           name: "Class37",
          },
          {
-          text: "Class 38",
+          text: "Named Views",
           name: "Class38"
          },
          {
-          text: "Class 39",
+          text: "Redirect and Alias",
           name: "Class39"
          },
          {
-          text: "Class 40",
+          text: "Passing Props",
           name: "Class40"
          },
          {
-          text: "Class 42",
+          text: "Global Guards",
           name: "Class42"
          },
          {
-          text: "Class 43",
+          text: "Route Guard",
           name: "Class43"
          },
          {
-          text: "Class 44",
+          text: "Component Guard",
           name: "Class44"
          },
          {
-          text: "Class 45",
+          text: "Meta Fields",
           name: "Class45"
          },
          {
-          text: "Class 47",
+          text: "Data Fetch (I)",
           name: "Class47"
          },
          {
-          text: "Class 48",
+          text: "Data Fetch (II)",
           name: "Class48"
          },
          {
-          text: 'Class 49',
+          text: 'Scroll Behaviour',
           name: "Class49"
          }
         ]
