@@ -312,6 +312,11 @@ const router = new VueRouter({
         }
        ]
       },
+      {
+       path: 'class50',
+       name: 'Class50',
+       component: () => import("../directives/class50.vue")
+      },
      ]
     },    
     {

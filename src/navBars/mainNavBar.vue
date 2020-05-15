@@ -262,6 +262,16 @@
          }
         ]
        },
+       {
+        classID: 'Directives',
+        icon: 'mdi-tag',
+        children:[
+         {
+          text:'Directives Intro',
+          name:'Class50'
+         },
+        ]
+       }
 						],
 					},
 					{
