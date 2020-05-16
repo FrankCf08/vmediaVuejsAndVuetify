@@ -274,6 +274,10 @@
           text: 'Directives Hooks',
           name: 'Class51'
          },
+         {
+          text: 'Objects Literals',
+          name: 'Class52'
+         },
         ]
        }
 						],

@@ -47,6 +47,12 @@ Vue.directive('bringForward',{
  }
 })
 
+Vue.directive('objectDirective', {
+ bind(el,binding){
+  console.log(binding.expression);
+ }
+})
+
 new Vue({
   router,
   vuetify,
