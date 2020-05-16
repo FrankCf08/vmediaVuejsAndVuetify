@@ -327,6 +327,11 @@ const router = new VueRouter({
        name: 'Class52',
        component: () => import("../directives/class52.vue")
       },
+      {
+       path: 'class53',
+       name: 'Class53',
+       component: () => import("../mixinFilters/class53.vue")
+      }
      ]
     },    
     {
