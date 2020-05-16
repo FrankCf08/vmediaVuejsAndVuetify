@@ -281,13 +281,17 @@
         ]
        },
        {
-        classID: 'Mixins and Filters',
+        classID: 'Mixins-and-Filters',
         icon:'mdi-filter-menu',
         children:[
          {
           text: 'Mixins Intro',
           name: 'Class53'
-         }
+         },
+         {
+          text: 'Mixins Merge',
+          name: 'Class54'
+         },
         ]
        },
 						],
