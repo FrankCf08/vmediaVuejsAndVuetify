@@ -5,6 +5,11 @@ import store from "./store"
 import router from './router'
 
 Vue.config.productionTip = false;
+/**Global Filter */
+
+Vue.filter('upperCase',(value)=>{
+ return value.toUpperCase()
+})
 
 Vue.directive('outstand', {
  /**

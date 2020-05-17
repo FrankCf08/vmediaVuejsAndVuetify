@@ -32,7 +32,7 @@
       <v-list-item>
        <v-list-item-content>
         <v-list-item-title class="display-1"> Implementing "Filters" on my name</v-list-item-title>
-        <v-list-item-title class="display-1"> {{ name | reverseValue }}</v-list-item-title>
+        <v-list-item-title class="display-1"> {{ name | reverseValue | upperCase}}</v-list-item-title>
         <v-list-item-subtitle class="subtitle-1"> {{ jobTitle | reverseValue }} </v-list-item-subtitle>
        </v-list-item-content>
       </v-list-item>
@@ -96,6 +96,7 @@ export default {
    jobTitle: 'Software Developer'
   }
  },
+ /** Local Filters */
  filters:{
   reverseValue(value){
    return value.split('').reverse().join('')
