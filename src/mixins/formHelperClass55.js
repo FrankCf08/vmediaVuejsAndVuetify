@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 
 // Global Mixin: Thi: VUe.mixin() is called for every instance created App.Vue, Class55, etc
 // Vue.mixin({
