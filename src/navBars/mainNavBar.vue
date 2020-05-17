@@ -292,6 +292,10 @@
           text: 'Mixins Merge',
           name: 'Class54'
          },
+         {
+          text: 'Global Mixins',
+          name: 'Class55'
+         },
         ]
        },
 						],

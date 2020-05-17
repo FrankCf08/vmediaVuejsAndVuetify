@@ -22,6 +22,7 @@
 <script>
 export default {
   name: "Classes",
+  Appname: 'Hi from Mainjs Instance',
   computed:{
    getClass(){
     const classValue = this.$route.path.split('/')[3]

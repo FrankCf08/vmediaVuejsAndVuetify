@@ -57,6 +57,7 @@ new Vue({
   router,
   vuetify,
   store,
-  render: h => h(App)
+  render: h => h(App),
+  AppName: 'A HI from Main Index'
 }).$mount("#app");
 
