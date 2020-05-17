@@ -302,6 +302,16 @@
          },
         ]
        },
+       {
+        classID: 'Form Binding',
+        icon: 'mdi-form-select',
+        children:[
+         {
+          text: 'Basic Form Binding',
+          name: 'Class57'
+         },
+        ]
+       }
 						],
 					},
 					{

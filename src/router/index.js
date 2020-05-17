@@ -347,6 +347,11 @@ const router = new VueRouter({
        name: 'Class56',
        component: () => import("../mixinFilters/class56.vue")
       },
+      {
+       path: 'class57',
+       name: 'Class57',
+       component: () => import("../formBinding/class57.vue")
+      },
      ]
     },    
     {
