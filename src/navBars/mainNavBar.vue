@@ -296,6 +296,10 @@
           text: 'Global Mixins',
           name: 'Class55'
          },
+         {
+          text: 'Filters',
+          name: 'Class56'
+         },
         ]
        },
 						],
