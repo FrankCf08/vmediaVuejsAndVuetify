@@ -303,12 +303,16 @@
         ]
        },
        {
-        classID: 'Form Binding',
+        classID: 'Form-Binding',
         icon: 'mdi-form-select',
         children:[
          {
           text: 'Basic Form Binding',
           name: 'Class57'
+         },
+         {
+          text: 'Form Value Bindings',
+          name: 'Class58'
          },
         ]
        }
