@@ -314,6 +314,10 @@
           text: 'Form Value Bindings',
           name: 'Class58'
          },
+         {
+          text: 'For Input Modifiers',
+          name: 'Class59'
+         },
         ]
        }
 						],

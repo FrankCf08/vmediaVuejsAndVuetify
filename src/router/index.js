@@ -357,6 +357,11 @@ const router = new VueRouter({
        name: 'Class58',
        component: () => import("../formBinding/class58.vue")
       },
+      {
+       path: 'class59',
+       name: 'Class59',
+       component: () => import("../formBinding/class59.vue")
+      },
      ]
     },    
     {
